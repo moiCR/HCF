@@ -22,6 +22,49 @@ public class ClaimManager extends Manager {
         this.chunkMap = new HashMap<>();
     }
 
+    @Override
+    public void load() {
+
+    }
+
+    @Override
+    public void unload() {
+
+    }
+
+    public boolean createClaim(Team team, Location corner1, Location corner2) {
+        if (!corner1.getWorld().equals(corner2.getWorld())) {
+            return false;
+        }
+
+        Claim newClaim = new Claim(corner1, corner2);
+        int x1 = newClaim.getMinX();
+        int x2 = newClaim.getMaxX();
+        int z1 = newClaim.getMinZ();
+        int z2 = newClaim.getMaxZ();
+
+
+        int minChunkX = x1 >> 4;
+        int maxChunkX = x2 >> 4;
+        int minChunkZ = z1 >> 4;
+        int maxChunkZ = z2 >> 4;
+
+        for (int x = minChunkX; x <= maxChunkX; x++) {
+            for (int z = minChunkZ; z <= maxChunkZ; z++) {
+                long key = getChunkKey(x, z);
+
+                if (chunkMap.containsKey(key)) {
+                    return  false;
+                }
+
+                chunkMap.put(key, newClaim);
+            }
+        }
+
+        team.getClaims().add(newClaim);
+        return true;
+    }
+
     public Claim getClaimAt(Location location) {
         if (location == null) return null;
 
@@ -55,7 +98,6 @@ public class ClaimManager extends Manager {
         return getInstance().getTeamManager().getWildernessTeam();
     }
 
-
     public boolean isWarzone(Location location) {
         if (location == null) return false;
 
@@ -72,10 +114,12 @@ public class ClaimManager extends Manager {
         return false;
     }
 
-    private long getChunkKey(Location location) {
-        int x = location.getBlockX() >> 4;
-        int z = location.getBlockZ() >> 4;
+    private long getChunkKey(int x, int z) {
         return (long) x & 0xFFFFFFFFL | ((long) z & 0xFFFFFFFFL) << 32;
+    }
+
+    private long getChunkKey(Location location) {
+        return getChunkKey(location.getBlockX() >> 4, location.getBlockZ() >> 4);
     }
 
 }

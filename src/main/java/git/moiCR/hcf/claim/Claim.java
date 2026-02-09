@@ -21,7 +21,6 @@ public class Claim {
 
     public Claim(Location corner1, Location corner2) {
         this.id = UUID.randomUUID();
-        https://github.com/moiCR/HCF.git
         this.worldName = corner1.getWorld().getName();
         this.x1 = corner1.getBlockX();
         this.y1 = corner1.getBlockY();

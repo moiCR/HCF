@@ -38,4 +38,8 @@ public abstract class Manager {
     public void playSound(Location location, Sound sound) {
         location.getWorld().playSound(location, sound, 1.0f, 1.0f);
     }
+
+
+    public void load(){}
+    public void unload(){}
 }
