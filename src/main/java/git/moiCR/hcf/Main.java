@@ -1,6 +1,6 @@
 package git.moiCR.hcf;
 
-import git.moiCR.hcf.claim.ClaimManager;
+import git.moiCR.hcf.teams.claim.ClaimManager;
 import git.moiCR.hcf.lib.menu.MenuHandler;
 import git.moiCR.hcf.teams.TeamManager;
 import lombok.Getter;

@@ -17,7 +17,4 @@ public abstract class Handler extends Manager {
         return null;
     }
 
-    public abstract void load();
-    public abstract void unload();
-
 }

@@ -1,4 +1,4 @@
-package git.moiCR.hcf.claim;
+package git.moiCR.hcf.teams.claim;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -34,15 +34,6 @@ public class MenuHandler extends Handler {
         openedMenus.remove(player.getUniqueId());
     }
 
-    @Override
-    public void load() {
-
-    }
-
-    @Override
-    public void unload() {
-
-    }
 
     @Override
     public Listener getEvents() {

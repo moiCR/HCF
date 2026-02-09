@@ -1,6 +1,6 @@
 package git.moiCR.hcf.teams;
 
-import git.moiCR.hcf.claim.Claim;
+import git.moiCR.hcf.teams.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;
