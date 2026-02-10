@@ -1,6 +1,7 @@
 package git.moiCR.hcf.teams;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.teams.claim.Claim;
 import git.moiCR.hcf.teams.type.TeamWarzone;
 import git.moiCR.hcf.teams.type.TeamWilderness;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
@@ -50,6 +51,13 @@ public class TeamManager extends Manager {
         return null;
     }
 
+    public Team getFactionByClaim(Claim claim){
+        for (Team team : teams) {
+            if(team.getClaims().contains(claim)) return team;
+        }
+        return null;
+    }
+
     public Team getFactionByPlayer(Player player){
         for (TeamPlayer team : getPlayerTeams()) {
             if (team.isMember(player)) return team;
@@ -64,4 +72,5 @@ public class TeamManager extends Manager {
         }
         return playerFactions;
     }
+
 }

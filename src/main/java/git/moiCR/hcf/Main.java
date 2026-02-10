@@ -1,5 +1,6 @@
 package git.moiCR.hcf;
 
+import git.moiCR.hcf.teams.TeamHandler;
 import git.moiCR.hcf.teams.claim.ClaimManager;
 import git.moiCR.hcf.lib.menu.MenuHandler;
 import git.moiCR.hcf.teams.TeamManager;
@@ -13,6 +14,7 @@ public final class Main extends JavaPlugin {
     private ClaimManager claimManager;
 
     private MenuHandler menuHandler;
+    private TeamHandler teamHandler;
 
     @Override
     public void onEnable() {
@@ -20,6 +22,7 @@ public final class Main extends JavaPlugin {
         this.claimManager = new ClaimManager(this);
 
         this.menuHandler = new MenuHandler(this);
+        this.teamHandler = new TeamHandler(this);
     }
 
     @Override

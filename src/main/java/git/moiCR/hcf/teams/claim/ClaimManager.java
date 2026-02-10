@@ -84,7 +84,7 @@ public class ClaimManager extends Manager {
 
         var claim = getClaimAt(location);
         if (claim != null) {
-            return getInstance().getTeamManager().getFaction(claim.getId());
+            return getInstance().getTeamManager().getFactionByClaim(claim);
         }
 
         if (environment == World.Environment.THE_END) {
