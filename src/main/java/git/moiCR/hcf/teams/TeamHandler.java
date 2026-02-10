@@ -39,10 +39,11 @@ public class TeamHandler extends Handler {
 
                 var newEvent = new PlayerChangeClaimEvent(event.getPlayer(), teamFrom, teamTo);
                 getInstance().getServer().getPluginManager().callEvent(newEvent);
-                if (newEvent.isCancelled()){
-                    event.setTo(from);
+                if (!newEvent.isCancelled()){
                     return;
                 }
+                
+                event.setTo(from);
             }
         };
     }
