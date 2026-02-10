@@ -42,7 +42,7 @@ public class TeamHandler extends Handler {
                 if (!newEvent.isCancelled()){
                     return;
                 }
-                
+
                 event.setTo(from);
             }
         };

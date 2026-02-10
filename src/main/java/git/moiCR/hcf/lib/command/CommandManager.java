@@ -2,6 +2,7 @@ package git.moiCR.hcf.lib.command;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.teams.commands.TeamCommand;
 import git.moiCR.hcf.utils.Manager;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,10 @@ public class CommandManager extends Manager {
 
     @Override
     public void load() {
-//        this.commands.forEach(this::registerCommand);
+        this.commands.addAll(List.of(
+                new TeamCommand(this)
+        ));
+        this.commands.forEach(this::registerCommand);
     }
 
     public void registerCommand(Command command) {

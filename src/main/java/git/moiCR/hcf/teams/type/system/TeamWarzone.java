@@ -1,4 +1,4 @@
-package git.moiCR.hcf.teams.type;
+package git.moiCR.hcf.teams.type.system;
 
 import git.moiCR.hcf.teams.Team;
 import org.bukkit.ChatColor;

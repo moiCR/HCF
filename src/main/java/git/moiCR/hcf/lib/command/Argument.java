@@ -10,9 +10,11 @@ import java.util.List;
 public abstract class Argument {
 
     private List<String> names;
+    private CommandManager manager;
 
     public Argument(CommandManager manager, List<String> names) {
         this.names = names;
+        this.manager = manager;
     }
 
     public abstract void execute(CommandSender sender, String[] args);

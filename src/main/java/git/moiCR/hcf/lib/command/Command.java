@@ -18,14 +18,14 @@ public abstract class Command {
     private String name;
     private String permission;
     private List<String> aliases;
-    private List<Argument> parameters;
+    private List<Argument> arguments;
     private boolean onlyPlayer;
 
     public Command(String name) {
         this.name = name;
         this.permission = "";
         this.aliases = new ArrayList<>();
-        this.parameters = new ArrayList<>();
+        this.arguments = new ArrayList<>();
         this.onlyPlayer = true;
     }
 
@@ -44,7 +44,7 @@ public abstract class Command {
             return;
         }
 
-        if (parameters.isEmpty()){
+        if (arguments.isEmpty()){
             execute(sender, args);
             return;
         }
@@ -77,7 +77,7 @@ public abstract class Command {
     }
 
     public Optional<Argument> getParameter(String name) {
-        return parameters.stream()
+        return arguments.stream()
                 .filter(param -> param.getNames().stream()
                         .anyMatch(paramName -> paramName.equalsIgnoreCase(name)))
                 .findFirst();

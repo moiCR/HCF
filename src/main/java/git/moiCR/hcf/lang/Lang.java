@@ -19,6 +19,36 @@ public enum Lang {
     UNKNOWN_COMMAND(
             "&cUnknown command.",
             "&cComando desconocido."
+    ),
+
+    INVALID_ARGS(
+            "&cInvalid arguments.",
+            "&cArgumentos invalidos."
+    ),
+
+    ERROR_OCCURRED(
+            "&cAn error occurred while executing this command.",
+            "&cOcurrio un error al ejecutar este comando."
+    ),
+
+    USAGE(
+            "&cUsage: %usage%",
+            "&cUso: %usage%"
+    ),
+
+    OPERATION_CANCELLED(
+            "&cOperation cancelled.",
+            "&cOperacion cancelada."
+    ),
+
+    TEAM_ALREADY_EXISTS(
+            "&cA team with that name already exists.",
+            "&cUn equipo con ese nombre ya existe."
+    ),
+
+    TEAM_SUCCESSFULLY_CREATED(
+            "&aTeam &e%team% &asuccessfully created.",
+            "&aEquipo &e%team% &acreado exitosamente."
     );
 
     private final String english;

@@ -2,14 +2,13 @@ package git.moiCR.hcf.teams;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.teams.claim.Claim;
-import git.moiCR.hcf.teams.type.TeamWarzone;
-import git.moiCR.hcf.teams.type.TeamWilderness;
+import git.moiCR.hcf.teams.type.system.TeamWarzone;
+import git.moiCR.hcf.teams.type.system.TeamWilderness;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import git.moiCR.hcf.utils.Manager;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -29,14 +28,14 @@ public class TeamManager extends Manager {
     }
 
 
-    public Team getFaction(UUID id){
+    public Team getTeam(UUID id){
         for (Team team : teams) {
             if(team.getId().equals(id)) return team;
         }
         return null;
     }
 
-    public Team getFaction(String name){
+    public Team getTeam(String name){
         for (Team faction : teams) {
             if (faction instanceof TeamPlayer) continue;
             if(faction.getName().equalsIgnoreCase(name)) return faction;
@@ -51,14 +50,14 @@ public class TeamManager extends Manager {
         return null;
     }
 
-    public Team getFactionByClaim(Claim claim){
+    public Team getTeamByClaim(Claim claim){
         for (Team team : teams) {
             if(team.getClaims().contains(claim)) return team;
         }
         return null;
     }
 
-    public Team getFactionByPlayer(Player player){
+    public Team getTeamByPlayer(Player player){
         for (TeamPlayer team : getPlayerTeams()) {
             if (team.isMember(player)) return team;
         }
