@@ -13,8 +13,7 @@ public abstract class Manager {
 
     public Manager(Main instance) {
         this.instance = instance;
-        this.load();
-        this.unload();
+        this.instance.getManagers().add(this);
     }
 
     public void sendMessage(Player player, String message) {

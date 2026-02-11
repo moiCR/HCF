@@ -34,10 +34,10 @@ public abstract class Menu  {
     @Setter
     private boolean movePlayerInventory = false, moveMenu = false;
 
-    @Getter(AccessLevel.PRIVATE)
-    private Main instance;
+    private final Main instance;
 
     public Menu(Main instance, Player player, boolean autoUpdate){
+        this.instance = instance;
         this.player = player;
         this.autoUpdate = autoUpdate;
         this.task = (autoUpdate ? Bukkit.getScheduler().runTaskTimerAsynchronously(instance, this::update, 0L, 100L) : null);
@@ -47,6 +47,8 @@ public abstract class Menu  {
         var title = getTitle();
         var size = Math.min(getSize(), 54);
 
+        if (title.length() > 32) title = title.substring(0, 32);
+        if (size % 9 != 0) size += (9 - (size % 9));
 
         this.inventory = Bukkit.createInventory(null, size, CC.t(title));
         this.update();

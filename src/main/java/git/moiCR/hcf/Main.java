@@ -5,11 +5,17 @@ import git.moiCR.hcf.teams.TeamHandler;
 import git.moiCR.hcf.teams.claim.ClaimManager;
 import git.moiCR.hcf.lib.menu.MenuHandler;
 import git.moiCR.hcf.teams.TeamManager;
+import git.moiCR.hcf.utils.Manager;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 public final class Main extends JavaPlugin {
+
+    private List<Manager> managers;
 
     private TeamManager teamManager;
     private ClaimManager claimManager;
@@ -20,16 +26,19 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        this.managers = new ArrayList<>();
         this.teamManager = new TeamManager(this);
         this.claimManager = new ClaimManager(this);
         this.commandManager = new CommandManager(this);
 
         this.menuHandler = new MenuHandler(this);
         this.teamHandler = new TeamHandler(this);
+
+        this.managers.forEach(Manager::load);
     }
 
     @Override
     public void onDisable() {
-
+        this.managers.forEach(Manager::unload);
     }
 }

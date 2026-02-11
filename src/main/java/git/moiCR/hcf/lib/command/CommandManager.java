@@ -9,19 +9,20 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 
 import java.lang.reflect.Constructor;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class CommandManager extends Manager {
 
     private final CommandMap commandMap;
-    private final List<Command> commands;
+    private final Set<Command> commands;
 
     public CommandManager(Main instance) {
         super(instance);
         this.commandMap = getInstance().getServer().getCommandMap();
-        this.commands = new ArrayList<>();
+        this.commands = new HashSet<>();
     }
 
     @Override

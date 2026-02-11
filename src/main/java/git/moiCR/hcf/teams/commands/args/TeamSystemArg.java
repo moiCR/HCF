@@ -32,7 +32,6 @@ public class TeamSystemArg extends Argument {
         }
 
         if (args[0].equalsIgnoreCase("create")){
-
             if (args.length < 2){
                 sender.sendMessage(Lang.INVALID_ARGS.get(sender));
                 return;
@@ -80,11 +79,11 @@ public class TeamSystemArg extends Argument {
                 "&7<> - Required",
                 "&7[] - Optional",
                 "",
-                "&e* &6/f system create <name> <type> &7- Create a faction.",
-                "&e* &6/f system claim <name> &7- Claim land for a faction.",
-                "&e* &6/f system edit <name> &7- Open the faction editor menu.",
-                "&e* &6/f system editor &7- Open the faction editor menu.",
-                "&e* &6/f system delete <name> &7- Delete a faction.",
+                "&e* &6/t system create <name> &7- Create a team.",
+                "&e* &6/t system claim <name> &7- Claim land for a team.",
+                "&e* &6/t system edit <name> &7- Open the team editor menu.",
+                "&e* &6/t system editor &7- Open the team editor menu.",
+                "&e* &6/t system delete <name> &7- Delete a team.",
                 "&7&m------------------------------------------------"
         );
     }
