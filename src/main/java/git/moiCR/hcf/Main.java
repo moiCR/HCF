@@ -1,6 +1,7 @@
 package git.moiCR.hcf;
 
 import git.moiCR.hcf.lib.command.CommandManager;
+import git.moiCR.hcf.lib.prompt.PromptHandler;
 import git.moiCR.hcf.teams.TeamHandler;
 import git.moiCR.hcf.teams.claim.ClaimManager;
 import git.moiCR.hcf.lib.menu.MenuHandler;
@@ -23,6 +24,7 @@ public final class Main extends JavaPlugin {
 
     private MenuHandler menuHandler;
     private TeamHandler teamHandler;
+    private PromptHandler promptHandler;
 
     @Override
     public void onEnable() {
@@ -33,6 +35,7 @@ public final class Main extends JavaPlugin {
 
         this.menuHandler = new MenuHandler(this);
         this.teamHandler = new TeamHandler(this);
+        this.promptHandler = new PromptHandler(this);
 
         this.managers.forEach(Manager::load);
     }

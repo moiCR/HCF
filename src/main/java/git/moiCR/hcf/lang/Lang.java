@@ -49,6 +49,21 @@ public enum Lang {
     TEAM_SUCCESSFULLY_CREATED(
             "&aTeam &e%team% &asuccessfully created.",
             "&aEquipo &e%team% &acreado exitosamente."
+    ),
+
+    PROCESS_CANCELLED(
+            "&cProcess cancelled.",
+            "&cProceso cancelado."
+    ),
+
+    PROCESS_ERROR(
+            "&cAn error occurred while processing your request.",
+            "&cOcurrio un error al procesar tu solicitud."
+    ),
+
+    PROMPT_EXPIRED(
+            "&cYour prompt has expired.",
+            "&cTu prompt ha expirado."
     );
 
     private final String english;
