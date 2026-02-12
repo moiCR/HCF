@@ -17,7 +17,6 @@ public class TeamHandler extends Handler {
 
     @Override
     public Listener getEvents() {
-
         return new Listener() {
             @EventHandler
             public void onMove(PlayerMoveEvent event){

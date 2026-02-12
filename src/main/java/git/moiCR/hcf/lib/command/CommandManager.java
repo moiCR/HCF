@@ -1,12 +1,14 @@
 package git.moiCR.hcf.lib.command;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.teams.commands.TeamCommand;
 import git.moiCR.hcf.utils.Manager;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.entity.Player;
 
 import java.lang.reflect.Constructor;
 import java.util.HashSet;
@@ -52,12 +54,12 @@ public class CommandManager extends Manager {
 
     public boolean executeCommand(CommandSender sender, Command command, String[] args){
         if (command == null){
-            sender.sendMessage(Lang.UNKNOWN_COMMAND.get(sender));
+            sender.sendMessage(LangHandler.INSTANCE.getMessage((sender instanceof Player player) ? player : null , Lang.UNKNOWN_COMMAND));
             return false;
         }
 
         if (!command.getPermission().isEmpty() && !sender.hasPermission(command.getPermission())){
-            sender.sendMessage(Lang.NO_PERMS.get(sender));
+            sender.sendMessage(LangHandler.INSTANCE.getMessage((sender instanceof Player player) ? player : null , Lang.NO_PERMS));
             return false;
         }
 

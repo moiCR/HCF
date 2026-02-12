@@ -1,6 +1,7 @@
 package git.moiCR.hcf.teams;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.teams.claim.Claim;
 import git.moiCR.hcf.teams.type.TeamTypeEnum;
@@ -70,12 +71,12 @@ public class TeamManager extends Manager {
 
     public boolean createTeam(Player player, String name, TeamTypeEnum teamType){
         if (teamType == null){
-            player.sendMessage(Lang.OPERATION_CANCELLED.get(player));
+            player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.OPERATION_CANCELLED));
             return false;
         }
 
         if (getTeam(name) != null){
-            player.sendMessage(Lang.TEAM_ALREADY_EXISTS.get(player));
+            player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.TEAM_ALREADY_EXISTS));
             return false;
         }
 
@@ -86,12 +87,12 @@ public class TeamManager extends Manager {
         }
 
         if (team == null){
-            player.sendMessage(Lang.ERROR_OCCURRED.get(player));
+            player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.ERROR_OCCURRED));
             return false;
         }
 
         getTeams().add(team);
-        player.sendMessage(Lang.TEAM_SUCCESSFULLY_CREATED.get(player).replace("%team%", team.getName()));
+        player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.TEAM_SUCCESSFULLY_CREATED).replace("%team%", team.getName()));
         return true;
     }
 

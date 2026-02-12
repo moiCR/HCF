@@ -1,6 +1,7 @@
 package git.moiCR.hcf.lib.prompt;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lib.prompt.task.PromptTask;
 import git.moiCR.hcf.utils.Handler;
@@ -24,7 +25,6 @@ public class PromptHandler extends Handler {
         new PromptTask(this);
     }
 
-
     @Override
     public Listener getEvents() {
         return new Listener() {
@@ -40,14 +40,14 @@ public class PromptHandler extends Handler {
 
                 event.setCancelled(true);
                 if (message.equalsIgnoreCase("cancel") || message.equalsIgnoreCase("exit")) {
-                    player.sendMessage(Lang.PROCESS_CANCELLED.get(player));
+                    player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.PROCESS_CANCELLED));
                     prompts.remove(player.getUniqueId());
                     return;
                 }
 
                 var prompt = prompts.get(player.getUniqueId());
                 if (!prompt.tryComplete(message)) {
-                    player.sendMessage(Lang.PROCESS_ERROR.get(player));
+                    player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.PROCESS_ERROR));
                     return;
                 }
 

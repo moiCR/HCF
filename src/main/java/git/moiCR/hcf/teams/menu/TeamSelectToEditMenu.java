@@ -1,16 +1,14 @@
 package git.moiCR.hcf.teams.menu;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
-import git.moiCR.hcf.lib.menu.Menu;
 import git.moiCR.hcf.lib.menu.button.Button;
 import git.moiCR.hcf.lib.menu.paginated.MenuPaginated;
 import git.moiCR.hcf.lib.prompt.type.PromptString;
 import git.moiCR.hcf.teams.menu.edit.TeamRoadEditMenu;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import git.moiCR.hcf.teams.type.system.TeamRoad;
-import git.moiCR.hcf.teams.type.system.TeamWilderness;
-import git.moiCR.hcf.utils.CC;
 import git.moiCR.hcf.utils.ItemMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -53,7 +51,7 @@ public class TeamSelectToEditMenu extends MenuPaginated {
                                         .setDisplayName(team.getDisplayName())
                                         .setLore(
                                                 " ",
-                                                Lang.CLICK_TO_EDIT.get(getPlayer()),
+                                                LangHandler.INSTANCE.getMessage(getPlayer(), Lang.CLICK_TO_EDIT),
                                                 " "
                                         )
                                         .build();
@@ -76,7 +74,6 @@ public class TeamSelectToEditMenu extends MenuPaginated {
 
 
     private class CreateTeamButton implements Button {
-
         @Override
         public ItemStack getIcon() {
             return ItemMaker.of(Material.EMERALD)
@@ -102,17 +99,17 @@ public class TeamSelectToEditMenu extends MenuPaginated {
         @Override
         public void onClick(InventoryClickEvent event) {
             var namePrompt = new PromptString(getInstance(), getPlayer());
-            namePrompt.setPromptMessage(getPlayer().spigot().getLocale().startsWith("es")
-                    ? "&aPor favor, ingresa el nombre del equipo:"
-                    : "&aPlease enter the team name:");
+            namePrompt.setPromptMessage(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.ENTER_TEAM_NAME));
             namePrompt.start();
             namePrompt.getFuture().thenAccept(name -> {
                 var teamType = new TeamSelectTypeMenu(getInstance(), getPlayer());
                 teamType.open();
                 teamType.getFuture().thenAccept(selectedType -> {
-                    if (!getInstance().getTeamManager().createTeam(getPlayer(), name, selectedType)) return;
+                    if (!getInstance().getTeamManager().createTeam(getPlayer(), name, selectedType)){
+                        return;
+                    }
 
-                    getPlayer().sendMessage(Lang.REDIRECTING.get(getPlayer()));
+                    getPlayer().sendMessage(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.REDIRECTING));
                     Bukkit.getScheduler().runTaskLaterAsynchronously(getInstance(), () -> new TeamSelectToEditMenu(getInstance(), getPlayer()).open(), 40L);
                 });
             });

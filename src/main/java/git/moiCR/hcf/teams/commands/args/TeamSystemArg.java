@@ -1,13 +1,11 @@
 package git.moiCR.hcf.teams.commands.args;
 
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lib.command.Argument;
 import git.moiCR.hcf.lib.command.CommandManager;
-import git.moiCR.hcf.teams.Team;
 import git.moiCR.hcf.teams.menu.TeamSelectToEditMenu;
 import git.moiCR.hcf.teams.menu.TeamSelectTypeMenu;
-import git.moiCR.hcf.teams.type.system.TeamRoad;
-import git.moiCR.hcf.teams.type.system.TeamSafezone;
 import git.moiCR.hcf.utils.CC;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -23,7 +21,7 @@ public class TeamSystemArg extends Argument {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (!sender.hasPermission("hcf.command.team.system")){
-            sender.sendMessage(Lang.NO_PERMS.get(sender));
+            sender.sendMessage(LangHandler.INSTANCE.getMessage((Player) sender, Lang.NO_PERMS));
             return;
         }
 
@@ -34,13 +32,13 @@ public class TeamSystemArg extends Argument {
 
         if (args[0].equalsIgnoreCase("create")){
             if (args.length < 2){
-                sender.sendMessage(Lang.INVALID_ARGS.get(sender));
+                sender.sendMessage(LangHandler.INSTANCE.getMessage((Player) sender, Lang.INVALID_ARGS));
                 return;
             }
 
             String name = args[1];
             if (getManager().getInstance().getTeamManager().getTeam(name) != null){
-                sender.sendMessage(Lang.TEAM_ALREADY_EXISTS.get(sender));
+                sender.sendMessage(LangHandler.INSTANCE.getMessage((Player) sender, Lang.TEAM_ALREADY_EXISTS));
                 return;
             }
 

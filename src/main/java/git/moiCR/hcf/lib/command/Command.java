@@ -1,5 +1,6 @@
 package git.moiCR.hcf.lib.command;
 
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.utils.CC;
 import lombok.Getter;
@@ -40,7 +41,7 @@ public abstract class Command {
 
     public void onExecute(CommandSender sender, String[] args){
         if (isOnlyPlayer() && !(sender instanceof Player)){
-            sender.sendMessage(CC.t(Lang.ONLY_PLAYER.get(sender)));
+            sender.sendMessage(CC.t(LangHandler.INSTANCE.getMessage(null, Lang.ONLY_PLAYER)));
             return;
         }
 

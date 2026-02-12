@@ -1,5 +1,6 @@
 package git.moiCR.hcf.lib.prompt.task;
 
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lib.prompt.Prompt;
 import git.moiCR.hcf.lib.prompt.PromptHandler;
@@ -32,7 +33,7 @@ public class PromptTask extends BukkitRunnable {
             var player = prompt.getPlayer();
             if (System.currentTimeMillis() - prompt.getTimeMillis() >= prompt.getTimeout()) {
                 if (player.isOnline()) {
-                    player.sendMessage(Lang.PROMPT_EXPIRED.get(player));
+                    player.sendMessage(LangHandler.INSTANCE.getMessage(player, Lang.PROMPT_EXPIRED));
                 }
 
                 prompt.getFuture().completeExceptionally(new TimeoutException("Prompt timed out"));
