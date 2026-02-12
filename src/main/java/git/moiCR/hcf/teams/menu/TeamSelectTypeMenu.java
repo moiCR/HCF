@@ -32,7 +32,7 @@ public class TeamSelectTypeMenu extends Menu {
 
     @Override
     public int getSize() {
-        return 27;
+        return 9;
     }
 
     @Override
@@ -59,6 +59,8 @@ public class TeamSelectTypeMenu extends Menu {
                 public void onClick(InventoryClickEvent event) {
                     future.complete(type);
                     getPlayer().closeInventory();
+
+
                 }
             });
         }

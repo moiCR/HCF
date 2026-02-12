@@ -4,17 +4,18 @@ import git.moiCR.hcf.lib.menu.button.Button;
 import git.moiCR.hcf.lib.menu.paginated.MenuPaginated;
 import git.moiCR.hcf.utils.ItemMaker;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public record NextButton(MenuPaginated menu) implements Button {
+public record NextButton(MenuPaginated menu, Player player) implements Button {
 
     @Override
     public ItemStack getIcon() {
         return ItemMaker.of(Material.SKULL_ITEM)
                 .setData(3)
-                .setDisplayName("&bNext Page")
-//                .setHeadTextureFromURL("http://textures.minecraft.net/texture/7c69d41076a8dea4f06d3f1a9ac47cc996988b74a0913ab2ac1a74caf7081918")
+                .setDisplayName(player.spigot().getLocale().startsWith("es") ? "&eSiguiente Pagina" : "&eNext Page")
+                .setHeadTextureFromURL("http://textures.minecraft.net/texture/7c69d41076a8dea4f06d3f1a9ac47cc996988b74a0913ab2ac1a74caf7081918")
                 .addAllFlags()
                 .build();
     }

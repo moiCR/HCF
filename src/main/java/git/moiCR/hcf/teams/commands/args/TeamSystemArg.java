@@ -4,6 +4,7 @@ import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lib.command.Argument;
 import git.moiCR.hcf.lib.command.CommandManager;
 import git.moiCR.hcf.teams.Team;
+import git.moiCR.hcf.teams.menu.TeamSelectToEditMenu;
 import git.moiCR.hcf.teams.menu.TeamSelectTypeMenu;
 import git.moiCR.hcf.teams.type.system.TeamRoad;
 import git.moiCR.hcf.teams.type.system.TeamSafezone;
@@ -46,28 +47,16 @@ public class TeamSystemArg extends Argument {
             var selectTypeMenu = new TeamSelectTypeMenu(getManager().getInstance(), (Player) sender);
             selectTypeMenu.open();
 
-            selectTypeMenu.getFuture().thenAccept(teamType -> {
-                if (teamType == null){
-                    sender.sendMessage(Lang.OPERATION_CANCELLED.get(sender));
-                    return;
-                }
-
-                Team team = null;
-                switch (teamType) {
-                    case ROAD -> team = new TeamRoad(name);
-                    case SAFE_ZONE -> team = new TeamSafezone(name);
-                }
-
-                if (team == null){
-                    sender.sendMessage(Lang.ERROR_OCCURRED.get(sender));
-                    return;
-                }
-
-                getManager().getInstance().getTeamManager().getTeams().add(team);
-                sender.sendMessage(Lang.TEAM_SUCCESSFULLY_CREATED.get(sender).replace("%team%", team.getName()));
-            });
+            selectTypeMenu.getFuture().thenAccept(teamType -> getManager().getInstance().getTeamManager().createTeam((Player) sender, name, teamType));
             return;
         }
+
+        if (args[0].equalsIgnoreCase("editor")){
+            new TeamSelectToEditMenu(getManager().getInstance(), (Player) sender).open();
+            return;
+        }
+
+        getUsage().forEach(s -> sender.sendMessage(CC.t(s)));
     }
 
     @Override

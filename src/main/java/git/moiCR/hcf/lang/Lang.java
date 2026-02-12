@@ -64,6 +64,16 @@ public enum Lang {
     PROMPT_EXPIRED(
             "&cYour prompt has expired.",
             "&cTu prompt ha expirado."
+    ),
+
+    CLICK_TO_EDIT(
+            "&eClick to edit.",
+            "&eClick para editar."
+    ),
+
+    REDIRECTING(
+            "&aRedirecting..",
+            "&aRedirigiendo.."
     );
 
     private final String english;

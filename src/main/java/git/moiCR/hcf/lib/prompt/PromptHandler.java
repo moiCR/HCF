@@ -41,6 +41,7 @@ public class PromptHandler extends Handler {
                 event.setCancelled(true);
                 if (message.equalsIgnoreCase("cancel") || message.equalsIgnoreCase("exit")) {
                     player.sendMessage(Lang.PROCESS_CANCELLED.get(player));
+                    prompts.remove(player.getUniqueId());
                     return;
                 }
 
@@ -50,7 +51,7 @@ public class PromptHandler extends Handler {
                     return;
                 }
 
-                prompts.remove(player.getUniqueId());;
+                prompts.remove(player.getUniqueId());
             }
         };
     }

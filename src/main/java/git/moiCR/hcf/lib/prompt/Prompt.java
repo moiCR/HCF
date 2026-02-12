@@ -1,16 +1,20 @@
 package git.moiCR.hcf.lib.prompt;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.utils.CC;
 import lombok.Getter;
+import lombok.Setter;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.util.concurrent.CompletableFuture;
 
-@Getter
+@Getter @Setter
 public abstract class Prompt<T> {
 
     private final Main instance;
     private final Player player;
+    private String promptMessage;
     private final long timeMillis;
     private final long timeout;
     private final CompletableFuture<T> future;
@@ -33,6 +37,7 @@ public abstract class Prompt<T> {
         }
 
         future.complete(result);
+        getInstance().getPromptHandler().playSound(player, Sound.LEVEL_UP);
         return true;
     }
 
@@ -40,6 +45,9 @@ public abstract class Prompt<T> {
         if (player.getOpenInventory() != null) {
             player.closeInventory();
         }
+
+        player.sendMessage(CC.t(promptMessage));
+        getInstance().getPromptHandler().playSound(player, Sound.LEVEL_UP);
         getInstance().getPromptHandler().getPrompts().put(getPlayer().getUniqueId(), this);
     }
 }

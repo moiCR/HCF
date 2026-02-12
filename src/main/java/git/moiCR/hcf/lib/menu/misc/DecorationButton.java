@@ -11,7 +11,7 @@ public record DecorationButton() implements Button {
     @Override
     public ItemStack getIcon() {
         return ItemMaker.of(Material.STAINED_GLASS_PANE)
-                .setData(10)
+                .setData(15)
                 .setDisplayName(" ")
                 .addAllFlags()
                 .build();

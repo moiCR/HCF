@@ -48,10 +48,10 @@ public enum NavigateBarType {
         }
 
         if (currentPage > 1){
-            buttons.put(prevSlot, new PrevButton(menu));
+            buttons.put(prevSlot, new PrevButton(menu, menu.getPlayer()));
         }
 
-        buttons.put(nextSlot, new NextButton(menu));
+        buttons.put(nextSlot, new NextButton(menu, menu.getPlayer()));
 
         return buttons;
     }

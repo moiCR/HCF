@@ -1,7 +1,11 @@
 package git.moiCR.hcf.teams;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.teams.claim.Claim;
+import git.moiCR.hcf.teams.type.TeamTypeEnum;
+import git.moiCR.hcf.teams.type.system.TeamRoad;
+import git.moiCR.hcf.teams.type.system.TeamSafezone;
 import git.moiCR.hcf.teams.type.system.TeamWarzone;
 import git.moiCR.hcf.teams.type.system.TeamWilderness;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
@@ -62,6 +66,33 @@ public class TeamManager extends Manager {
             if (team.isMember(player)) return team;
         }
         return null;
+    }
+
+    public boolean createTeam(Player player, String name, TeamTypeEnum teamType){
+        if (teamType == null){
+            player.sendMessage(Lang.OPERATION_CANCELLED.get(player));
+            return false;
+        }
+
+        if (getTeam(name) != null){
+            player.sendMessage(Lang.TEAM_ALREADY_EXISTS.get(player));
+            return false;
+        }
+
+        Team team = null;
+        switch (teamType) {
+            case ROAD -> team = new TeamRoad(name);
+            case SAFE_ZONE -> team = new TeamSafezone(name);
+        }
+
+        if (team == null){
+            player.sendMessage(Lang.ERROR_OCCURRED.get(player));
+            return false;
+        }
+
+        getTeams().add(team);
+        player.sendMessage(Lang.TEAM_SUCCESSFULLY_CREATED.get(player).replace("%team%", team.getName()));
+        return true;
     }
 
     public Set<TeamPlayer> getPlayerTeams(){
