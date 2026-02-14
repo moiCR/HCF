@@ -7,6 +7,13 @@ import lombok.Getter;
 @Getter
 public enum Lang {
 
+    //VALUES
+    NAME("name-value", "name"),
+    DISPLAY_NAME("display-name-value", "displayName"),
+    COLOR("color-value", "color"),
+    CLAIM("claim-value", "claim"),
+
+
     NO_PERMS("no-perms", "&c&lYou don't have permissions."),
     ONLY_PLAYER("only-player", "&c&lThis command is only executable in game."),
     UNKNOWN_COMMAND("unknown-command", "&c&lUnknown command."),
@@ -22,7 +29,19 @@ public enum Lang {
     CLICK_TO_EDIT("click-to-edit", "&eClick to edit."),
     REDIRECTING("redirecting", "&aRedirecting.."),
     ENTER_TEAM_NAME("enter-team-name", "&aPlease enter the team name."),
-    SELECT_TEAM_TYPE("select-team-type", "&aPlease select the team type.");
+    SELECT_TEAM_TYPE("select-team-type", "&aPlease select the team type."),
+    SELECT_TEAM_TO_EDIT("select-team-to-edit", "Select a team."),
+    NEXT_PAGE("next-page", "&eNext page"),
+    PREVIOUS_PAGE("previous-page", "&ePrevious page"),
+    EDITING("editing", "Editing %name%'s"),
+    NEW_TEAM_CREATE("new-team-create", "&aCreate a new team"),
+    NEW_TEAM_CREATE_LORE("new-team-create-lore", "&eClick to create a new team."),
+    CLICK_TO_CHANGE("click-to-change", "&aClick to change %value%"),
+    CURRENT_VALUE("current-value", "&aCurrent value&7: %value%"),
+    ENTER_NEW_VALUE("enter-new-value", "&aEnter new %value%"),
+    SELECT_COLOR("select-color", "Select a color"),
+
+    BACK_BUTTON("back-button", "&cBack");
 
     private final String path;
     private final String defaultMessage;

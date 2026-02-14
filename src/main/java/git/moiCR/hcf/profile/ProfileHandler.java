@@ -12,7 +12,6 @@ public class ProfileHandler extends Handler {
         super(instance);
     }
 
-
     @Override
     public Listener getEvents() {
         return new Listener() {

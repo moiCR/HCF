@@ -11,5 +11,16 @@ process-cancelled: "&c&lProcess cancelled."
 process-error: "&cAn error occurred while processing your request."
 prompt-expired: "&cYour prompt has expired."
 click-to-edit: "&eClick to edit."
-redirecting: "&aRedirecting.."
+redirecting: "&aRedirecting..."
 enter-team-name: "&eEnter the name for the team."
+
+select-team-to-edit: "Select a team to edit."
+
+next-page: "&eNext page"
+previous-page: "&ePrevious page"
+
+editing: "Editing: %team%'s"
+
+new-team-create: "&aCreate a new team"
+new-team-create-lore:
+  - "&eClick to create a new team."

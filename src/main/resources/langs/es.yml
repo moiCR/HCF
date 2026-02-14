@@ -12,4 +12,22 @@ process-error: "&cOcurrió un error al procesar tu solicitud."
 prompt-expired: "&cTu prompt ha expirado."
 click-to-edit: "&eClick para editar."
 redirecting: "&aRedirigiendo..."
-enter-team-name: "&eDigita el nombre para el team."
+enter-team-name: "&eDigita el nombre para el equipo."
+select-team-to-edit: "Selecciona un equipo"
+
+next-page: "&eSiguiente página"
+previous-page: "&ePágina anterior"
+
+editing: "Editando: %team%"
+new-team-create: "&aCrear un nuevo equipo"
+new-team-create-lore:
+  - "&eHaz clic para crear un nuevo equipo."
+
+click-to-change: "&eHaz click para cambiar el %value%"
+current-value:
+  - ""
+  - "&aValor actual&7: %value%"
+  - ""
+
+select-color: "Selecciona un color"
+back-button: "&cRetroceder"

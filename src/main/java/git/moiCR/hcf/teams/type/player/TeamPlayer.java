@@ -1,6 +1,8 @@
 package git.moiCR.hcf.teams.type.player;
 
 import git.moiCR.hcf.teams.Team;
+import git.moiCR.hcf.teams.type.player.extra.Member;
+import git.moiCR.hcf.teams.type.player.extra.Role;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;

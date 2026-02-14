@@ -75,6 +75,14 @@ public abstract class Menu  {
         getButtons().forEach(((slot, button) -> this.inventory.setItem(slot, button.getIcon())));
     }
 
+    public void redirect(Menu menu){
+        if (getPlayer().getOpenInventory() != null){
+            getPlayer().getOpenInventory().close();
+        }
+
+        menu.open();
+    }
+
     public abstract String getTitle();
     public abstract int getSize();
     public abstract Map<Integer, Button> getButtons();

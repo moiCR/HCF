@@ -55,6 +55,11 @@ public class LangHandler extends Handler {
 
 
     public String getMessage(Player player, Lang dictionary) {
+
+        if (player == null) {
+            return CC.t(dictionary.getDefaultMessage());
+        }
+
         var profile = getInstance().getProfileManager().findProfile(player);
 
         if (profile == null) return CC.t(dictionary.getDefaultMessage());
@@ -76,6 +81,11 @@ public class LangHandler extends Handler {
     }
 
     public List<String> getMessageList(Player player, Lang dictionary) {
+
+        if (player == null) {
+            return List.of(CC.t(dictionary.getDefaultMessage()));
+        }
+
         var profile = getInstance().getProfileManager().findProfile(player);
 
         if (profile == null) return List.of(CC.t(dictionary.getDefaultMessage()));
@@ -109,18 +119,17 @@ public class LangHandler extends Handler {
         }
     }
 
-    public String getLangKey(String playerLocale) {
+    private String getLangKey(String playerLocale) {
         if (langFiles.containsKey(playerLocale)) {
             return playerLocale;
         }
 
         if (playerLocale.contains("_")) {
-            String baseLang = playerLocale.split("_")[0]; // Toma lo antes del "_"
+            String baseLang = playerLocale.split("_")[0];
             if (langFiles.containsKey(baseLang)) {
                 return baseLang;
             }
         }
-
         return "en";
     }
 

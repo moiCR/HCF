@@ -24,10 +24,13 @@ shadowJar{
 }
 
 dependencies {
-    compileOnly 'org.github.paperspigot:paperspigot-api:1.8.8-R0.1-SNAPSHOT'
+    compileOnly name: "panda"
+    compileOnly name: "panda-api"
     compileOnly("com.mojang:authlib:3.13.56")
     compileOnly 'org.projectlombok:lombok:1.18.36'
     annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+    implementation name: "fanciful"
 }
 
 tasks {

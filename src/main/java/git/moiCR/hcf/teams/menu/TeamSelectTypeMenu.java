@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 
 public class TeamSelectTypeMenu extends Menu {
@@ -23,6 +24,7 @@ public class TeamSelectTypeMenu extends Menu {
     public TeamSelectTypeMenu(Main instance, Player player) {
         super(instance, player, false);
         this.future = new CompletableFuture<>();
+        setSoundOnClick(true);
     }
 
     @Override
@@ -59,12 +61,18 @@ public class TeamSelectTypeMenu extends Menu {
                 public void onClick(InventoryClickEvent event) {
                     future.complete(type);
                     getPlayer().closeInventory();
-
-
                 }
             });
         }
-
         return buttons;
+    }
+
+    @Override
+    public void onClose() {
+        if(future.isDone()){
+            return;
+        }
+
+        future.completeExceptionally(new CancellationException("The process has been cancelled."));
     }
 }
