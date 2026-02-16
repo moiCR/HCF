@@ -41,7 +41,8 @@ public enum Lang {
     ENTER_NEW_VALUE("enter-new-value", "&aEnter new %value%"),
     SELECT_COLOR("select-color", "Select a color"),
 
-    BACK_BUTTON("back-button", "&cBack");
+    BACK_BUTTON("back-button", "&cBack"),
+    CLICK_TO_MANAGE("click-to-manage", "Click to manage %value%");
 
     private final String path;
     private final String defaultMessage;

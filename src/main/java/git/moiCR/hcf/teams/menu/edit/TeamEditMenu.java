@@ -51,6 +51,9 @@ public class TeamEditMenu extends Menu {
         buttons.put(2, new NameButton());
         buttons.put(3, new DisplayNameButton());
         buttons.put(4, new ColorButton());
+        buttons.put(5, new ClaimsButton());
+
+
         buttons.put(8, new BackButton(getPlayer(), this, new TeamEditorMenu(getInstance(), getPlayer())));
         return buttons;
     }
@@ -142,7 +145,7 @@ public class TeamEditMenu extends Menu {
             var namePrompt = new PromptString(getInstance(), getPlayer());
 
             namePrompt.setPromptMessage(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.ENTER_NEW_VALUE).
-                    replace("%value%", "displayName"));
+                    replace("%value%", LangHandler.INSTANCE.getMessage(getPlayer(), Lang.DISPLAY_NAME)));
             namePrompt.start();
 
             namePrompt.getFuture().thenAccept(displayName -> {
@@ -198,11 +201,11 @@ public class TeamEditMenu extends Menu {
         @Override
         public ItemStack getIcon() {
             return ItemMaker.of(Material.COMPASS)
-                    .setDisplayName(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.CLICK_TO_CHANGE)
-                            .replace("%value%", "color"))
+                    .setDisplayName(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.CLICK_TO_MANAGE)
+                            .replace("%value%", LangHandler.INSTANCE.getMessage(getPlayer(), Lang.CLAIM)))
 
                     .setLore(LangHandler.INSTANCE.getMessageList(getPlayer(), Lang.CURRENT_VALUE)
-                            .stream().map(s -> s.replace("%value%", team.getColor().name())).toList())
+                            .stream().map(s -> s.replace("%value%", String.valueOf(team.getClaims().size()))).toList())
 
                     .addAllFlags()
                     .build();

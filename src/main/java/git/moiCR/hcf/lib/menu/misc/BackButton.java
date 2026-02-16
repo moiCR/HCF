@@ -10,15 +10,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.awt.*;
-
-public record BackButton(Player player, Menu current, Menu previous) implements Button {
-
+public record BackButton(
+    Player player,
+    Menu current,
+    Menu previous
+) implements Button {
     @Override
     public ItemStack getIcon() {
         return ItemMaker.of(Material.REDSTONE)
-                .setDisplayName(LangHandler.INSTANCE.getMessage(player, Lang.BACK_BUTTON))
-                .addAllFlags().build();
+            .setDisplayName(
+                LangHandler.INSTANCE.getMessage(player, Lang.BACK_BUTTON)
+            )
+            .addAllFlags()
+            .build();
     }
 
     @Override

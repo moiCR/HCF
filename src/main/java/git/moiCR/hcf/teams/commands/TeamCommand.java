@@ -2,7 +2,7 @@ package git.moiCR.hcf.teams.commands;
 
 import git.moiCR.hcf.lib.command.Command;
 import git.moiCR.hcf.lib.command.CommandManager;
-import git.moiCR.hcf.teams.commands.args.admin.TeamSystemArg;
+import git.moiCR.hcf.teams.commands.args.staff.TeamSystemArg;
 
 import java.util.List;
 

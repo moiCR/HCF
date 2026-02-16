@@ -10,7 +10,7 @@ import git.moiCR.hcf.teams.type.system.TeamSafezone;
 import git.moiCR.hcf.teams.type.system.TeamWarzone;
 import git.moiCR.hcf.teams.type.system.TeamWilderness;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
-import git.moiCR.hcf.utils.Manager;
+import git.moiCR.hcf.lib.Manager;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 

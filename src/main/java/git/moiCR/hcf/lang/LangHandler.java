@@ -2,7 +2,7 @@ package git.moiCR.hcf.lang;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.utils.CC;
-import git.moiCR.hcf.utils.Handler;
+import git.moiCR.hcf.lib.Handler;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

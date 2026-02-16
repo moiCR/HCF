@@ -2,7 +2,7 @@ package git.moiCR.hcf.teams.claim;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.teams.Team;
-import git.moiCR.hcf.utils.Manager;
+import git.moiCR.hcf.lib.Manager;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -16,20 +16,12 @@ public class ClaimManager extends Manager {
     private final Map<Long, Claim> chunkMap;
     private final int WARZONE_RADIUS = 1000;
     private final int NETHER_WARZONE_RADIUS = 500;
+    private final ClaimHandler handler;
 
     public ClaimManager(Main instance) {
         super(instance);
         this.chunkMap = new HashMap<>();
-    }
-
-    @Override
-    public void load() {
-
-    }
-
-    @Override
-    public void unload() {
-
+        this.handler = new ClaimHandler(instance);
     }
 
     public boolean createClaim(Team team, Location corner1, Location corner2) {

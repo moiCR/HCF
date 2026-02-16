@@ -1,6 +1,6 @@
 package git.moiCR.hcf.lib.menu;
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.utils.Handler;
+import git.moiCR.hcf.lib.Handler;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

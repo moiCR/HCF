@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -22,6 +23,7 @@ public abstract class Team {
         this.name = name;
         this.displayName = displayName;
         this.color = color;
+        this.claims = new HashSet<>();
     }
 
 }

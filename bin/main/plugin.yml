@@ -1,0 +1,4 @@
+name: HCF
+version: '0.2-SNAPSHOT'
+main: git.moiCR.hcf.Main
+api-version: '1.8.8'

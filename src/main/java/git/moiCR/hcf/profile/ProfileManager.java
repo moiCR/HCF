@@ -1,7 +1,7 @@
 package git.moiCR.hcf.profile;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.utils.Handler;
+import git.moiCR.hcf.lib.Handler;
 import org.bukkit.entity.Player;
 
 import java.util.*;

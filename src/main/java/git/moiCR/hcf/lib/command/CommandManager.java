@@ -4,7 +4,7 @@ import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.teams.commands.TeamCommand;
-import git.moiCR.hcf.utils.Manager;
+import git.moiCR.hcf.lib.Manager;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;

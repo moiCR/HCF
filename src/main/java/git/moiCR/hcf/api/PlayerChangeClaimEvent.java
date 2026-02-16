@@ -2,14 +2,13 @@ package git.moiCR.hcf.api;
 
 import git.moiCR.hcf.teams.Team;
 import lombok.Getter;
-import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 @Getter
-public class PlayerChangeClaimEvent extends Event  implements Cancellable {
+public class PlayerChangeClaimEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 

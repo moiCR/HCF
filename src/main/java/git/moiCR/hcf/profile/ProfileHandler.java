@@ -1,7 +1,7 @@
 package git.moiCR.hcf.profile;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.utils.Handler;
+import git.moiCR.hcf.lib.Handler;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

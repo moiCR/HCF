@@ -1,16 +1,14 @@
 package git.moiCR.hcf.profile;
 
 import git.moiCR.hcf.teams.type.player.extra.TeamInvite;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -18,6 +16,7 @@ public class HCFProfile {
 
     @Setter(AccessLevel.NONE)
     private UUID id;
+
     private String name;
 
     private int balance;
@@ -40,16 +39,15 @@ public class HCFProfile {
         this.invites = new HashSet<>();
     }
 
-    public void updateName(){
+    public void updateName() {
         var player = Bukkit.getPlayer(getId());
-        if (player == null){
+        if (player == null) {
             return;
         }
 
-        if (!player.getName().equals(getName())){
+        if (!player.getName().equals(getName())) {
             return;
         }
         setName(player.getName());
     }
-
 }
