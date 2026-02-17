@@ -13,7 +13,7 @@ The primary goal of this project is to provide a robust and scalable foundation 
 
 ## 📺 Showcases
 ### Team System Editor
-<video src="assets/team_create.mp4" autoplay muted loop style="max-width: 100%;"></video>
+<video src="https://github.com/user-attachments/assets/86943153-a114-465a-abff-82736bd7e388" autoplay muted loop style="max-width: 100%;"></video>
 <video src="assets/team_edit.mp4" autoplay muted loop style="max-width: 100%;"></video>
 <video src="assets/team_claim.mp4" autoplay muted loop style="max-width: 100%;"></video>
 
