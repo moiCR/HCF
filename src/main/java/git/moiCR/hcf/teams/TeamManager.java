@@ -4,7 +4,7 @@ import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.Manager;
-import git.moiCR.hcf.teams.claim.Claim;
+import git.moiCR.hcf.claim.Claim;
 import git.moiCR.hcf.teams.type.TeamTypeEnum;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import git.moiCR.hcf.teams.type.system.TeamRoad;

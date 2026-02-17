@@ -3,6 +3,7 @@ package git.moiCR.hcf.teams.commands.args.staff;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.command.Argument;
+import git.moiCR.hcf.lib.command.Command;
 import git.moiCR.hcf.lib.command.CommandManager;
 import git.moiCR.hcf.teams.menu.TeamEditorMenu;
 import git.moiCR.hcf.teams.menu.TeamSelectTypeMenu;
@@ -26,7 +27,7 @@ public class TeamSystemArg extends Argument {
         }
 
         if (args.length == 0){
-            getUsage().forEach(s -> sender.sendMessage(CC.t(s)));
+            getUsage(sender).forEach(s -> sender.sendMessage(CC.t(s)));
             return;
         }
 
@@ -59,21 +60,11 @@ public class TeamSystemArg extends Argument {
             return;
         }
 
-        getUsage().forEach(s -> sender.sendMessage(CC.t(s)));
+        getUsage(sender).forEach(s -> sender.sendMessage(CC.t(s)));
     }
 
     @Override
-    public List<String> getUsage() {
-        return List.of(
-                "&7&m------------------------------------------------",
-                "&6&lTeam System Commands",
-                "",
-                "&7<> - Required",
-                "&7[] - Optional",
-                "",
-                "&e* &6/t system create <name> &7- Create a team.",
-                "&e* &6/t system editor &7- Open the team editor menu.",
-                "&7&m------------------------------------------------"
-        );
+    public List<String> getUsage(CommandSender sender) {
+        return LangHandler.INSTANCE.getMessageList((Player) sender, Lang.TEAM_SYSTEM_COMMAND_USAGE);
     }
 }

@@ -24,9 +24,13 @@ shadowJar{
     relocate("xyz.xenondevs.particle", "git.moiCR.hcf.lib.particle")
     relocate("mkremins.fanciful", "git.moiCR.hcf.lib.fanciful")
     relocate("net.amoebaman.util", "git.moiCR.hcf.utils")
+    relocate("com.google", "git.moiCR.hcf.lib.gson")
+    relocate("com.mongodb", "git.moiCR.hcf.lib.mongodb")
 
     exclude 'META-INF/maven/**'
     exclude 'META-INF/annotations/**'
+
+    minimize()
 }
 
 dependencies {
@@ -34,11 +38,12 @@ dependencies {
     compileOnly name: "panda-api"
     compileOnly("com.mojang:authlib:3.13.56")
     compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'org.mongodb:mongodb-driver-sync:5.1.0'
     implementation name: "fanciful"
     implementation 'xyz.xenondevs:particle:1.8.3'
-
 }
 
 tasks {

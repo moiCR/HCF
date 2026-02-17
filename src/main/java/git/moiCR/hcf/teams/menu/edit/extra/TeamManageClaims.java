@@ -7,7 +7,7 @@ import git.moiCR.hcf.lib.menu.button.Button;
 import git.moiCR.hcf.lib.menu.misc.BackButton;
 import git.moiCR.hcf.lib.menu.paginated.MenuPaginated;
 import git.moiCR.hcf.teams.Team;
-import git.moiCR.hcf.teams.claim.Claim;
+import git.moiCR.hcf.claim.Claim;
 import git.moiCR.hcf.teams.menu.edit.TeamEditMenu;
 import git.moiCR.hcf.utils.Constants;
 import git.moiCR.hcf.utils.ItemMaker;
@@ -46,7 +46,7 @@ public class TeamManageClaims extends MenuPaginated {
                 public ItemStack getIcon() {
                     return ItemMaker.of(Material.BEACON)
                             .setDisplayName(ChatColor.BLUE + (claim.getCenter().getX() + ", " + claim.getCenter().getY() + ", " + claim.getCenter().getZ()))
-                            .setLore(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.TEAM_CLAIM_LORE))
+                            .setLore(LangHandler.INSTANCE.getMessageList(getPlayer(), Lang.TEAM_CLAIM_LORE))
                             .build();
                 }
 
@@ -74,7 +74,7 @@ public class TeamManageClaims extends MenuPaginated {
 
     @Override
     public String getTitle() {
-        return "BLABLABLA";
+        return LangHandler.INSTANCE.getMessage(getPlayer(), Lang.EDITING).replace("%name%", team.getName());
     }
 
     @Override
@@ -110,13 +110,15 @@ public class TeamManageClaims extends MenuPaginated {
 
             if (getPlayer().getInventory().firstEmpty() == -1) return;
 
+            if (getPlayer().getInventory().contains(Constants.SYSTEM_WAND)) {
+                getPlayer().getInventory().remove(Constants.SYSTEM_WAND);
+            }
+
             getPlayer().getInventory().addItem(Constants.SYSTEM_WAND);
             var claimSelection = getInstance().getClaimManager().getHandler().startClaimSelection(getPlayer());
             claimSelection.getFuture().thenRun(() -> {
                 getPlayer().getInventory().remove(Constants.SYSTEM_WAND);
-                var newClaim = new Claim(claimSelection.getCorner1(), claimSelection.getCorner2());
-                team.addClaim(newClaim);
-
+                getInstance().getClaimManager().createClaim(team, claimSelection.getCorner1(), claimSelection.getCorner2());
                 redirect(new TeamManageClaims(getInstance(), getPlayer(), team));
             }).exceptionally(throwable -> {
                 getPlayer().getInventory().remove(Constants.SYSTEM_WAND);

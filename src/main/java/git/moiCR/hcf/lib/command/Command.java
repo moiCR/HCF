@@ -37,7 +37,7 @@ public abstract class Command {
      * @param args   The arguments provided with the command.
      */
     protected void execute(CommandSender sender, String[] args){}
-    public abstract List<String> getUsage();
+    public abstract List<String> getUsage(CommandSender sender);
 
     public void onExecute(CommandSender sender, String[] args){
         if (isOnlyPlayer() && !(sender instanceof Player)){
@@ -70,11 +70,11 @@ public abstract class Command {
      * @param sender The sender requesting the usage information.
      */
     public void sendUsage(CommandSender sender){
-        if (getUsage() == null || getUsage().isEmpty()){
+        if (getUsage(sender) == null || getUsage(sender).isEmpty()){
             return;
         }
 
-        getUsage().forEach(line -> sender.sendMessage(CC.t(line)));
+        getUsage(sender).forEach(line -> sender.sendMessage(CC.t(line)));
     }
 
     public Optional<Argument> getParameter(String name) {

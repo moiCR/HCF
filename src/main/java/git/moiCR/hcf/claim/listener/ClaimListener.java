@@ -1,11 +1,11 @@
-package git.moiCR.hcf.teams.claim.listener;
+package git.moiCR.hcf.claim.listener;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.api.PlayerChangeClaimEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.Objects;
 
@@ -36,14 +36,34 @@ public class ClaimListener implements Listener {
             return;
         }
 
-
-
-        var newEvent = new PlayerChangeClaimEvent(event.getPlayer(), teamFrom, teamTo);
+        var newEvent = new PlayerChangeClaimEvent(player, teamFrom, teamTo);
         plugin.getServer().getPluginManager().callEvent(newEvent);
         if (!newEvent.isCancelled()){
             return;
         }
 
         event.setTo(from);
+    }
+
+    @EventHandler
+    public void onTeleport(PlayerTeleportEvent event){
+        var from = event.getFrom();
+        var to = event.getTo();
+        var player = event.getPlayer();
+
+        var teamFrom = plugin.getClaimManager().getTeamAt(from);
+        var teamTo = plugin.getClaimManager().getTeamAt(to);
+
+        if (Objects.equals(teamFrom, teamTo)){
+            return;
+        }
+
+        var newEvent = new PlayerChangeClaimEvent(player, teamFrom, teamTo);
+        plugin.getServer().getPluginManager().callEvent(newEvent);
+        if (!newEvent.isCancelled()){
+            return;
+        }
+
+        event.setCancelled(true);
     }
 }

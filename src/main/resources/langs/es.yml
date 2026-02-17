@@ -1,3 +1,4 @@
+# Mensajes Generales
 no-perms: "&c&lNo tienes permisos."
 only-player: "&cEste comando solo puede ejecutarse dentro del juego."
 unknown-command: "&cComando desconocido."
@@ -5,35 +6,86 @@ invalid-args: "&cArgumentos inválidos."
 error-occurred: "&cOcurrió un error al ejecutar este comando."
 usage: "&cUso: %usage%"
 operation-cancelled: "&cOperación cancelada."
+
+# Equipos y Procesos
 team-already-exists: "&cUn equipo con ese nombre ya existe."
 team-successfully-created: "&aEquipo &e%team% &acreado exitosamente."
 process-cancelled: "&cProceso cancelado."
 process-error: "&cOcurrió un error al procesar tu solicitud."
 prompt-expired: "&cTu prompt ha expirado."
-click-to-edit: "&eClick para editar."
 redirecting: "&aRedirigiendo..."
 enter-team-name: "&eDigita el nombre para el equipo."
-select-team-to-edit: "Selecciona un equipo"
+select-team-type: "&aPor favor selecciona el tipo de equipo."
 
+# GUI y Edición
+select-team-to-edit: "Selecciona un equipo"
+click-to-edit: "&eClick para editar."
+click-to-change: "&eHaz click para cambiar el %value%"
+click-to-manage: "Click para gestionar %value%"
+current-value:
+  - ""
+  - "&aValor actual&7: %value%"
+  - ""
+enter-new-value: "&aIngresa el nuevo %value%"
+select-color: "Selecciona un color"
+back-button: "&cRetroceder"
 next-page: "&eSiguiente página"
 previous-page: "&ePágina anterior"
-
 editing: "Editando: %team%"
 new-team-create: "&aCrear un nuevo equipo"
 new-team-create-lore:
   - "&eHaz clic para crear un nuevo equipo."
 
-click-to-change: "&eHaz click para cambiar el %value%"
-current-value:
-  - ""
-  - "&aValor actual&7: %value%"
-  - ""
+# Valores
+name-value: "nombre"
+display-name-value: "nombre para mostrar"
+color-value: "color"
+claim-value: "claim"
 
-select-color: "Selecciona un color"
-back-button: "&cRetroceder"
-
+# Claims
+from-claim: "&7Desde: %team% &7(%deathban%)"
+to-claim: "&7Hasta: %team% &7(%deathban%)"
+both-corners: "&cDebes seleccionar ambos bordes del claim."
+first-corner-selected: "&aPrimer borde seleccionado en &e%location%"
+second-corner-selected: "&aSegundo borde seleccionado en &e%location%"
+team-new-claim: "&aCrear un nuevo claim"
+team-new-claim-lore:
+  - "&eClick para crear un nuevo claim."
 team-claim-lore:
   - ""
-  - "&bClick izquierdo para teletransportarte a este claim."
-  - "&bClick derecho para eliminar este claim."
+  - "&aClick izquierdo para teletransportarte a este claim."
+  - "&cClick derecho para eliminar este claim."
+
+# Commands
+team-command-usage:
+  - "&7&m------------------------------------------------"
+  - "&6&lComandos de Equipo"
   - ""
+  - "&7<> - Requerido"
+  - "&7[] - Opcional"
+  - ""
+  - "&e* &6/t create <nombre> &7- Crea un equipo."
+  - "&e* &6/t join <nombre> &7- Únete a un equipo."
+  - "&e* &6/t leave &7- Abandona tu equipo actual."
+  - "&e* &6/t who [nombre] &7- Mira información sobre un equipo."
+  - "&e* &6/t deposit <cantidad/all> &7- Deposita dinero al equipo."
+  - ""
+  - "&6&lComandos de Capitán"
+  - ""
+  - "&e* &6/t claim &7- Inicia el proceso de claim."
+  - "&e* &6/t invite <jugador> &7- Invita a un jugador a tu equipo."
+  - ""
+  - "&e&lComandos de Líder"
+  - "&e* &6/t disband &7- Disuelve tu equipo."
+  - "&7&m------------------------------------------------"
+
+team-system-command-usage:
+  - "&7&m------------------------------------------------"
+  - "&6&lComandos de Sistema"
+  - ""
+  - "&7<> - Requerido"
+  - "&7[] - Opcional"
+  - ""
+  - "&e* &6/t system create <nombre> &7- Crea un equipo de sistema."
+  - "&e* &6/t system editor &7- Abre el menú del editor de equipos."
+  - "&7&m------------------------------------------------"

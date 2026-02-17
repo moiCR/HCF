@@ -1,10 +1,9 @@
-package git.moiCR.hcf.teams.claim;
+package git.moiCR.hcf.claim;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.Handler;
-import git.moiCR.hcf.teams.Team;
 import git.moiCR.hcf.utils.Constants;
 import git.moiCR.hcf.utils.ParticleUtil;
 import lombok.Getter;

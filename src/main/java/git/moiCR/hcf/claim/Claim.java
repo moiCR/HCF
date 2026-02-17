@@ -1,4 +1,4 @@
-package git.moiCR.hcf.teams.claim;
+package git.moiCR.hcf.claim;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,13 +14,15 @@ public class Claim {
 
     private final UUID id;
     private String worldName;
+    private UUID ownerId;
     private int x1, y1, z1;
     private int x2, y2, z2;
 
     private int minX, maxX, minZ, maxZ;
 
-    public Claim(Location corner1, Location corner2) {
+    public Claim(Location corner1, Location corner2, UUID ownerId) {
         this.id = UUID.randomUUID();
+        this.ownerId = ownerId;
         this.worldName = corner1.getWorld().getName();
         this.x1 = corner1.getBlockX();
         this.y1 = corner1.getBlockY();

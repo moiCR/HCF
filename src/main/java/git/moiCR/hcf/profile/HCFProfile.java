@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -46,7 +47,7 @@ public class HCFProfile {
             return;
         }
 
-        if (!player.getName().equals(getName())) {
+        if (Objects.equals(player.getName(), name)) {
             return;
         }
         setName(player.getName());

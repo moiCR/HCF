@@ -8,7 +8,7 @@ import git.moiCR.hcf.lib.prompt.PromptHandler;
 import git.moiCR.hcf.listener.ListenerManager;
 import git.moiCR.hcf.profile.ProfileManager;
 import git.moiCR.hcf.teams.TeamManager;
-import git.moiCR.hcf.teams.claim.ClaimManager;
+import git.moiCR.hcf.claim.ClaimManager;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 

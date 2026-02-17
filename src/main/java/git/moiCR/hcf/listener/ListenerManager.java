@@ -4,7 +4,7 @@ import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lib.Manager;
 import git.moiCR.hcf.listener.impl.GeneralListener;
 import git.moiCR.hcf.profile.listener.ProfileListener;
-import git.moiCR.hcf.teams.claim.listener.ClaimListener;
+import git.moiCR.hcf.claim.listener.ClaimListener;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 

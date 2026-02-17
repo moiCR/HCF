@@ -18,6 +18,6 @@ public abstract class Argument {
     }
 
     public abstract void execute(CommandSender sender, String[] args);
-    public abstract List<String> getUsage();
+    public abstract List<String> getUsage(CommandSender sender);
 
 }

@@ -1,4 +1,4 @@
-package git.moiCR.hcf.teams.claim;
+package git.moiCR.hcf.claim;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lib.Manager;
@@ -24,12 +24,12 @@ public class ClaimManager extends Manager {
         this.handler = new ClaimHandler(instance);
     }
 
-    public boolean createClaim(Team team, Location corner1, Location corner2) {
+    public void createClaim(Team team, Location corner1, Location corner2) {
         if (!corner1.getWorld().equals(corner2.getWorld())) {
-            return false;
+            return;
         }
 
-        Claim newClaim = new Claim(corner1, corner2);
+        Claim newClaim = new Claim(corner1, corner2, team.getId());
         int x1 = newClaim.getMinX();
         int x2 = newClaim.getMaxX();
         int z1 = newClaim.getMinZ();
@@ -46,7 +46,7 @@ public class ClaimManager extends Manager {
                 long key = getChunkKey(x, z);
 
                 if (chunkMap.containsKey(key)) {
-                    return  false;
+                    return;
                 }
 
                 chunkMap.put(key, newClaim);
@@ -54,7 +54,6 @@ public class ClaimManager extends Manager {
         }
 
         team.getClaims().add(newClaim);
-        return true;
     }
 
     public Claim getClaimAt(Location location) {
@@ -76,7 +75,7 @@ public class ClaimManager extends Manager {
 
         var claim = getClaimAt(location);
         if (claim != null) {
-            return getInstance().getTeamManager().getTeamByClaim(claim);
+            return getInstance().getTeamManager().getTeam(claim.getOwnerId());
         }
 
         if (environment == World.Environment.THE_END) {

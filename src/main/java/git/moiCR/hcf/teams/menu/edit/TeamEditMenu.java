@@ -107,7 +107,7 @@ public class TeamEditMenu extends Menu {
             var namePrompt = new PromptString(getInstance(), getPlayer());
 
             namePrompt.setPromptMessage(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.ENTER_NEW_VALUE)
-                    .replace("%value%", "name"));
+                    .replace("%value%", LangHandler.INSTANCE.getMessage(getPlayer(), Lang.NAME)));
             namePrompt.start();
 
             namePrompt.getFuture().thenAccept(name -> {
@@ -127,7 +127,7 @@ public class TeamEditMenu extends Menu {
         public ItemStack getIcon() {
             return ItemMaker.of(Material.NAME_TAG)
                     .setDisplayName(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.CLICK_TO_CHANGE)
-                            .replace("%value%", "displayName"))
+                            .replace("%value%", LangHandler.INSTANCE.getMessage(getPlayer(), Lang.DISPLAY_NAME)))
 
                     .setLore(LangHandler.INSTANCE.getMessageList(getPlayer(), Lang.CURRENT_VALUE)
                             .stream().map(s -> s.replace("%value%", team.getDisplayName())).toList())
@@ -166,7 +166,7 @@ public class TeamEditMenu extends Menu {
             return ItemMaker.of(Material.WOOL)
                     .setData(ColorType.getByChatColor(team.getColor()).getWoolData())
                     .setDisplayName(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.CLICK_TO_CHANGE)
-                            .replace("%value%", "color"))
+                            .replace("%value%", LangHandler.INSTANCE.getMessage(getPlayer(), Lang.COLOR)))
 
                     .setLore(LangHandler.INSTANCE.getMessageList(getPlayer(), Lang.CURRENT_VALUE)
                             .stream().map(s -> s.replace("%value%", team.getColor().name())).toList())
@@ -182,7 +182,6 @@ public class TeamEditMenu extends Menu {
 
         @Override
         public void onClick(InventoryClickEvent event) {
-            getPlayer().closeInventory();
             var menu = new TeamSelectColorMenu(getInstance(), getPlayer());
             redirect(menu);
 
@@ -190,9 +189,7 @@ public class TeamEditMenu extends Menu {
                team.setColor(color.getChatColor());
                redirect(new TeamEditMenu(getInstance(), getPlayer(), team));
             }).exceptionally(ex -> {
-                getPlayer().closeInventory();
                 getPlayer().sendMessage(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.OPERATION_CANCELLED));
-                redirect(new TeamEditMenu(getInstance(), getPlayer(), team));
                 return null;
             });
         }

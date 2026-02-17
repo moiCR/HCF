@@ -8,10 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class MenuHandler extends Handler {
 
@@ -46,6 +43,9 @@ public class MenuHandler extends Handler {
                 optMenu.ifPresent(menu -> {
                     var buttons = menu.getButtons();
                     event.setCancelled(!menu.isMoveMenu());
+                    if (!Objects.equals(event.getClickedInventory(), menu.getInventory())) {
+                        return;
+                    }
 
                     buttons.forEach((slot, button) ->{
                         if (slot == event.getSlot()){

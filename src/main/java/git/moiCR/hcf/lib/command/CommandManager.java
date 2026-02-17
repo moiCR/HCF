@@ -76,7 +76,6 @@ public class CommandManager extends Manager {
             e.printStackTrace();
             return null;
         }
-
     }
 
     @Override

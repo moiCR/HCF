@@ -20,6 +20,7 @@ public class ProfileListener implements Listener {
         var player = event.getPlayer();
         var profile = plugin.getProfileManager().findProfile(player);
         if (profile != null){
+            profile.updateName();
             return;
         }
         profile = new HCFProfile(player);

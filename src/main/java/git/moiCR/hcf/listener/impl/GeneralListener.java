@@ -2,12 +2,15 @@ package git.moiCR.hcf.listener.impl;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.api.PlayerChangeClaimEvent;
+import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.teams.type.system.TeamSafezone;
-import git.moiCR.hcf.utils.CC;
 import lombok.AllArgsConstructor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 
 @AllArgsConstructor
 public class GeneralListener implements Listener {
@@ -20,11 +23,28 @@ public class GeneralListener implements Listener {
         var fromTeam = event.getFrom();
         var player = event.getPlayer();
 
-        player.sendMessage(CC.t("&7From: " + fromTeam.getColor() + fromTeam.getName() +
-                "&7(" + (fromTeam instanceof TeamSafezone ? "&aNon-Deathban" : "&cDeathban") + "&7)"));
+        player.sendMessage(LangHandler.INSTANCE.getMessage(event.getPlayer(), Lang.FROM_CLAIM)
+                .replace("%team%", fromTeam.getColor() + fromTeam.getName())
+                .replace("%deathban%", fromTeam instanceof TeamSafezone ?
+                        LangHandler.INSTANCE.getMessage(player, Lang.NON_DEATH_BAN) :
+                        LangHandler.INSTANCE.getMessage(player, Lang.DEATH_BAN)));
 
-        player.sendMessage(CC.t("&7To: " + toTeam.getColor() + toTeam.getName() +
-                "&7(" + (toTeam instanceof TeamSafezone ? "&aNon-Deathban" : "&cDeathban") + "&7)"));
+        player.sendMessage(LangHandler.INSTANCE.getMessage(event.getPlayer(), Lang.TO_CLAIM)
+                .replace("%team%", toTeam.getColor() + toTeam.getName())
+                .replace("%deathban%", toTeam instanceof TeamSafezone ?
+                        LangHandler.INSTANCE.getMessage(player, Lang.NON_DEATH_BAN) :
+                        LangHandler.INSTANCE.getMessage(player, Lang.DEATH_BAN)));
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onCreatureSpawn(CreatureSpawnEvent event){
+        if (event.getEntity() instanceof Player){
+            return;
+        }
+
+        if (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER){
+            event.setCancelled(true);
+        }
     }
 
 

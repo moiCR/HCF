@@ -1,9 +1,8 @@
 package git.moiCR.hcf.utils;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.teams.claim.ClaimHandler;
+import git.moiCR.hcf.claim.ClaimHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -42,19 +41,19 @@ public class ParticleUtil {
     }
 
     public static void stop(UUID playerId) {
-        if (activeTasks.containsKey(playerId)) {
+        if (isRunning(playerId)) {
             activeTasks.remove(playerId).cancel();
         }
     }
 
     private static void drawCuboid(Player player, Location corner1, Location corner2) {
-        double minX = Math.min(corner1.getX(), corner2.getX());
-        double minY = Math.min(corner1.getY(), corner2.getY());
-        double minZ = Math.min(corner1.getZ(), corner2.getZ());
-        double maxX = Math.max(corner1.getX(), corner2.getX());
-
-        double maxZ = Math.max(corner1.getZ(), corner2.getZ());
         World world = corner1.getWorld();
+
+        double minX = Math.min(corner1.getX(), corner2.getX());
+        double maxX = Math.max(corner1.getX(), corner2.getX());
+        double minZ = Math.min(corner1.getZ(), corner2.getZ());
+        double maxZ = Math.max(corner1.getZ(), corner2.getZ());
+        double minY = 0;
         double maxY = world.getMaxHeight();
 
         drawLine(player, new Location(world, minX, minY, minZ), new Location(world, maxX, minY, minZ));

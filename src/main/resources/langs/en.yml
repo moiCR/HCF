@@ -1,3 +1,4 @@
+# General Messages
 no-perms: "&c&lYou don't have permissions."
 only-player: "&c&lThis command is only executable in game."
 unknown-command: "&c&lUnknown command."
@@ -5,22 +6,81 @@ invalid-args: "&c&lInvalid arguments."
 error-occurred: "&c&lAn error occurred while executing this command."
 usage: "&c&lUsage: %usage%"
 operation-cancelled: "&c&lOperation cancelled."
+
+# Team & Process
 team-already-exists: "&c&lA team with that name already exists."
 team-successfully-created: "&a&lTeam &e%team% &asuccessfully created."
 process-cancelled: "&c&lProcess cancelled."
 process-error: "&cAn error occurred while processing your request."
 prompt-expired: "&cYour prompt has expired."
-click-to-edit: "&eClick to edit."
 redirecting: "&aRedirecting..."
 enter-team-name: "&eEnter the name for the team."
+select-team-type: "Please select the team type."
 
+# GUI & Editing
 select-team-to-edit: "Select a team to edit."
-
+click-to-edit: "&eClick to edit."
+click-to-change: "&aClick to change %value%"
+click-to-manage: "Click to manage %value%"
+current-value: "&aCurrent value&7: %value%"
+enter-new-value: "&aEnter new %value%"
+select-color: "Select a color"
+back-button: "&cBack"
 next-page: "&eNext page"
 previous-page: "&ePrevious page"
-
 editing: "Editing: %team%'s"
-
 new-team-create: "&aCreate a new team"
 new-team-create-lore:
   - "&eClick to create a new team."
+
+# Values
+name-value: "name"
+display-name-value: "displayName"
+color-value: "color"
+claim-value: "claim"
+
+# Claims
+from-claim: "&7From: %team% &7(%deathban%)"
+to-claim: "&7To: %team% &7(%deathban%)"
+both-corners: "&cYou must select both corners of the claim."
+first-corner-selected: "&aFirst corner selected at &e%location%"
+second-corner-selected: "&aSecond corner selected at &e%location%"
+team-new-claim: "&aCreate a new claim"
+team-new-claim-lore:
+  - "&eClick to create a new claim."
+team-claim-lore:
+  - ""
+  - "&aClick to teleport to this claim."
+  - "&cRight click to delete this claim."
+
+# Commands
+team-command-usage:
+  - "&7&m------------------------------------------------"
+  - "&6&lTeam Commands"
+  - ""
+  - "&7<> - Required"
+  - "&7[] - Optional"
+  - ""
+  - "&e* &6/t create <name> &7- Create a team."
+  - "&e* &6/t join <name> &7- Join a team."
+  - "&e* &6/t leave &7- Leave your current team."
+  - "&e* &6/t who [name] &7- View information about a team."
+  - "&e* &6/t deposit <amount>/all &7- Deposit money to the team."
+  - ""
+  - "&6&lCaptain Commands"
+  - ""
+  - "&e* &6/t claim &7- Start claim process"
+  - "&e* &6/t invite <player> &7- Invite a player to your team."
+  - ""
+  - "&e&lLeader Commands"
+  - "&e* &6/t disband &7- Disband your team."
+team-system-command-usage:
+  - "&7&m------------------------------------------------"
+  - "&6&lTeam System Commands"
+  - ""
+  - "&7<> - Required"
+  - "&7[] - Optional"
+  - ""
+  - "&e* &6/t system create <name> &7- Create a team."
+  - "&e* &6/t system editor &7- Open the team editor menu."
+  - "&7&m------------------------------------------------"

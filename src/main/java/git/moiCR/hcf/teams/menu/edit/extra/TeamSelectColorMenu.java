@@ -74,5 +74,6 @@ public class TeamSelectColorMenu extends MenuPaginated {
             return;
         }
 
-        future.completeExceptionally(new CancellationException("The process has been cancelled."));    }
+        future.completeExceptionally(new CancellationException("The process has been cancelled."));
+    }
 }

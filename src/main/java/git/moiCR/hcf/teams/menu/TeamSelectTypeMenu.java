@@ -1,6 +1,8 @@
 package git.moiCR.hcf.teams.menu;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.menu.Menu;
 import git.moiCR.hcf.lib.menu.button.Button;
 import git.moiCR.hcf.teams.type.TeamTypeEnum;
@@ -29,7 +31,7 @@ public class TeamSelectTypeMenu extends Menu {
 
     @Override
     public String getTitle() {
-        return "Select Team Type";
+        return LangHandler.INSTANCE.getMessage(getPlayer(), Lang.SELECT_TEAM_TYPE);
     }
 
     @Override

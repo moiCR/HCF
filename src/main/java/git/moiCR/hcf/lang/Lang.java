@@ -13,7 +13,15 @@ public enum Lang {
     COLOR("color-value", "color"),
     CLAIM("claim-value", "claim"),
 
+    FROM_CLAIM("from-claim", "&7From&7: %team% &7(%deathban%&7)"),
+    TO_CLAIM("to-claim", "&7From&7: %team% &7(%deathban%&7)"),
+    DEATH_BAN("deathban", "&cDeathban"),
+    NON_DEATH_BAN("non-deathban", "&aNon-Deathban"),
+
     BOTH_CORNERS("both-corners", "&cYou must select both corners of the claim."),
+
+    TEAM_COMMAND_USAGE("team-command-usage", "&cError in lang file: team-command-usage"),
+    TEAM_SYSTEM_COMMAND_USAGE("team-system-command-usage", "&cError in lang file: team-system-command-usage"),
 
     FIRST_CORNER_SELECTED("first-corner-selected", "&aFirst corner selected at &e%location%"),
     SECOND_CORNER_SELECTED("second-corner-selected", "&aSecond corner selected at &e%location%"),
@@ -38,7 +46,7 @@ public enum Lang {
     CLICK_TO_EDIT("click-to-edit", "&eClick to edit."),
     REDIRECTING("redirecting", "&aRedirecting.."),
     ENTER_TEAM_NAME("enter-team-name", "&aPlease enter the team name."),
-    SELECT_TEAM_TYPE("select-team-type", "&aPlease select the team type."),
+    SELECT_TEAM_TYPE("select-team-type", "Please select the team type."),
     SELECT_TEAM_TO_EDIT("select-team-to-edit", "Select a team."),
     NEXT_PAGE("next-page", "&eNext page"),
     PREVIOUS_PAGE("previous-page", "&ePrevious page"),
