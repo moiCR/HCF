@@ -26,4 +26,12 @@ public abstract class Team {
         this.claims = new HashSet<>();
     }
 
+    public void addClaim(Claim claim){
+        claims.add(claim);
+    }
+
+    public void removeClaim(Claim claim){
+        claims.removeIf(claims::contains);
+    }
+
 }

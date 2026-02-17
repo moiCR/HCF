@@ -1,8 +1,8 @@
 package git.moiCR.hcf.teams.claim;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.teams.Team;
 import git.moiCR.hcf.lib.Manager;
+import git.moiCR.hcf.teams.Team;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.World;

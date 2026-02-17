@@ -1,8 +1,8 @@
 package git.moiCR.hcf.teams.menu;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.menu.button.Button;
 import git.moiCR.hcf.lib.menu.paginated.MenuPaginated;
 import git.moiCR.hcf.lib.prompt.type.PromptString;

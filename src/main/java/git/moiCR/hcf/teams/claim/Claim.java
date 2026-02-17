@@ -69,6 +69,13 @@ public class Claim {
                 this.minZ <= other.maxZ && this.maxZ >= other.minZ;
     }
 
+    public Location getCenter() {
+        double centerX = (minX + maxX) / 2.0;
+        double centerZ = (minZ + maxZ) / 2.0;
+        double centerY = Math.max(y1, y2) + 1;
+        return new Location(getWorld(), centerX, centerY, centerZ);
+    }
+
     public void iterateChunks(ChunkConsumer consumer) {
         int startX = minX >> 4;
         int endX = maxX >> 4;

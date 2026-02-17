@@ -1,16 +1,16 @@
 package git.moiCR.hcf.teams;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
+import git.moiCR.hcf.lib.Manager;
 import git.moiCR.hcf.teams.claim.Claim;
 import git.moiCR.hcf.teams.type.TeamTypeEnum;
+import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import git.moiCR.hcf.teams.type.system.TeamRoad;
 import git.moiCR.hcf.teams.type.system.TeamSafezone;
 import git.moiCR.hcf.teams.type.system.TeamWarzone;
 import git.moiCR.hcf.teams.type.system.TeamWilderness;
-import git.moiCR.hcf.teams.type.player.TeamPlayer;
-import git.moiCR.hcf.lib.Manager;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 

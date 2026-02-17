@@ -1,14 +1,15 @@
 package git.moiCR.hcf.profile;
 
 import git.moiCR.hcf.teams.type.player.extra.TeamInvite;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter

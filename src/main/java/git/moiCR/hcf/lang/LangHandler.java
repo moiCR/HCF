@@ -1,8 +1,8 @@
 package git.moiCR.hcf.lang;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.utils.CC;
 import git.moiCR.hcf.lib.Handler;
+import git.moiCR.hcf.utils.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -12,7 +12,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLocaleChangeEvent;
 
 import java.io.File;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LangHandler extends Handler {
 

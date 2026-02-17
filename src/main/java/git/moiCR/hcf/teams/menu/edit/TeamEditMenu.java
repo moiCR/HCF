@@ -10,6 +10,7 @@ import git.moiCR.hcf.lib.menu.misc.BackButton;
 import git.moiCR.hcf.lib.prompt.type.PromptString;
 import git.moiCR.hcf.teams.Team;
 import git.moiCR.hcf.teams.menu.TeamEditorMenu;
+import git.moiCR.hcf.teams.menu.edit.extra.TeamManageClaims;
 import git.moiCR.hcf.teams.menu.edit.extra.TeamSelectColorMenu;
 import git.moiCR.hcf.utils.ColorType;
 import git.moiCR.hcf.utils.ItemMaker;
@@ -189,6 +190,7 @@ public class TeamEditMenu extends Menu {
                team.setColor(color.getChatColor());
                redirect(new TeamEditMenu(getInstance(), getPlayer(), team));
             }).exceptionally(ex -> {
+                getPlayer().closeInventory();
                 getPlayer().sendMessage(LangHandler.INSTANCE.getMessage(getPlayer(), Lang.OPERATION_CANCELLED));
                 redirect(new TeamEditMenu(getInstance(), getPlayer(), team));
                 return null;
@@ -218,7 +220,7 @@ public class TeamEditMenu extends Menu {
 
         @Override
         public void onClick(InventoryClickEvent event) {
-
+            redirect(new TeamManageClaims(getInstance(), getPlayer(), team));
         }
     }
 }

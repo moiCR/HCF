@@ -1,7 +1,7 @@
 package git.moiCR.hcf.lib.prompt.task;
 
-import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.prompt.Prompt;
 import git.moiCR.hcf.lib.prompt.PromptHandler;
 import org.bukkit.scheduler.BukkitRunnable;

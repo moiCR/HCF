@@ -13,16 +13,17 @@ public class Member {
 
     private final UUID id;
     private Role role;
+    private ChatChannel chatChannel;
 
     public Member(UUID id, Role role) {
         this.id = id;
         this.role = role;
+        this.chatChannel = ChatChannel.GLOBAL;
     }
 
     public Player getPlayer() {
         return Bukkit.getPlayer(id);
     }
-
     public OfflinePlayer getOfflinePlayer() {
         return Bukkit.getOfflinePlayer(id);
     }

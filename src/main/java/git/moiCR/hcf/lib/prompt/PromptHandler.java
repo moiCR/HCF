@@ -1,10 +1,10 @@
 package git.moiCR.hcf.lib.prompt;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
-import git.moiCR.hcf.lib.prompt.task.PromptTask;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.Handler;
+import git.moiCR.hcf.lib.prompt.task.PromptTask;
 import lombok.Getter;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

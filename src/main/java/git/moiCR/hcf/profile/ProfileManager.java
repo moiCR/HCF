@@ -2,9 +2,13 @@ package git.moiCR.hcf.profile;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lib.Handler;
+import git.moiCR.hcf.profile.listener.ProfileListener;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class ProfileManager extends Handler {
 
@@ -13,6 +17,14 @@ public class ProfileManager extends Handler {
     public ProfileManager(Main instance) {
         super(instance);
         this.profiles = new HashMap<>();
+    }
+
+    @Override
+    public void load() {
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            var profile = new HCFProfile(player);
+            addProfile(profile);
+        });
     }
 
     public HCFProfile findProfile(Player player){
@@ -26,7 +38,6 @@ public class ProfileManager extends Handler {
     public HCFProfile findByName(String name){
         return  profiles.values().stream().filter(profile -> profile.getName().equals(name)).findFirst().orElse(null);
     }
-
     public void addProfile(HCFProfile profile){
         profiles.put(profile.getId(), profile);
     }

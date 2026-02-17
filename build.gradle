@@ -21,6 +21,12 @@ repositories {
 
 shadowJar{
     archiveClassifier.set('')
+    relocate("xyz.xenondevs.particle", "git.moiCR.hcf.lib.particle")
+    relocate("mkremins.fanciful", "git.moiCR.hcf.lib.fanciful")
+    relocate("net.amoebaman.util", "git.moiCR.hcf.utils")
+
+    exclude 'META-INF/maven/**'
+    exclude 'META-INF/annotations/**'
 }
 
 dependencies {
@@ -31,6 +37,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     implementation name: "fanciful"
+    implementation 'xyz.xenondevs:particle:1.8.3'
+
 }
 
 tasks {

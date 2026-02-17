@@ -1,7 +1,7 @@
 package git.moiCR.hcf.lib.command;
 
-import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.utils.CC;
 import lombok.Getter;
 import lombok.Setter;

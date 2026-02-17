@@ -31,3 +31,9 @@ current-value:
 
 select-color: "Selecciona un color"
 back-button: "&cRetroceder"
+
+team-claim-lore:
+  - ""
+  - "&bClick izquierdo para teletransportarte a este claim."
+  - "&bClick derecho para eliminar este claim."
+  - ""

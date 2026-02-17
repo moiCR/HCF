@@ -13,6 +13,15 @@ public enum Lang {
     COLOR("color-value", "color"),
     CLAIM("claim-value", "claim"),
 
+    BOTH_CORNERS("both-corners", "&cYou must select both corners of the claim."),
+
+    FIRST_CORNER_SELECTED("first-corner-selected", "&aFirst corner selected at &e%location%"),
+    SECOND_CORNER_SELECTED("second-corner-selected", "&aSecond corner selected at &e%location%"),
+
+    TEAM_NEW_CLAIM("team-new-claim", "&aCreate a new claim"),
+    TEAM_NEW_CLAIM_LORE("team-new-claim-lore", "&eClick to create a new claim."),
+
+    TEAM_CLAIM_LORE("team-claim-lore", "&eClick to teleport to this claim."),
 
     NO_PERMS("no-perms", "&c&lYou don't have permissions."),
     ONLY_PLAYER("only-player", "&c&lThis command is only executable in game."),

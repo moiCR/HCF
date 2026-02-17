@@ -1,7 +1,7 @@
 package git.moiCR.hcf.teams.commands.args.staff;
 
-import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.command.Argument;
 import git.moiCR.hcf.lib.command.CommandManager;
 import git.moiCR.hcf.teams.menu.TeamEditorMenu;
