@@ -14,7 +14,6 @@ The primary goal of this project is to provide a robust and scalable foundation 
 ## 📺 Showcases
 ### Team System Editor
 <video src="https://github.com/user-attachments/assets/86943153-a114-465a-abff-82736bd7e388" autoplay muted loop style="max-width: 100%;"></video>
-<video src="https://github.com/user-attachments/assets/d73b84b1-b990-44d9-924f-821057463f2f" autoplay muted loop style="max-width: 100%;"></video>
 <video src="https://github.com/user-attachments/assets/15d42ca0-6ef8-4170-bd40-e9e242c1194f" autoplay muted loop style="max-width: 100%;"></video>
 
 ## 🗺️ Roadmap
