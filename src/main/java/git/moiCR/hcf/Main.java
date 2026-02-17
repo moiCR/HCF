@@ -8,7 +8,8 @@ import git.moiCR.hcf.lib.prompt.PromptHandler;
 import git.moiCR.hcf.listener.ListenerManager;
 import git.moiCR.hcf.profile.ProfileManager;
 import git.moiCR.hcf.teams.TeamManager;
-import git.moiCR.hcf.claim.ClaimManager;
+import git.moiCR.hcf.teams.claim.ClaimManager;
+import git.moiCR.hcf.utils.YmlFile;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,6 +32,8 @@ public final class Main extends JavaPlugin {
     private PromptHandler promptHandler;
     private LangHandler langHandler;
 
+    private YmlFile config;
+
     @Override
     public void onEnable() {
         this.managers = new ArrayList<>();
@@ -43,6 +46,8 @@ public final class Main extends JavaPlugin {
         this.menuHandler = new MenuHandler(this);
         this.promptHandler = new PromptHandler(this);
         this.langHandler = new LangHandler(this);
+
+        this.config = new YmlFile(this, "config");
 
         this.managers.forEach(Manager::load);
     }

@@ -7,7 +7,7 @@ import git.moiCR.hcf.lib.menu.button.Button;
 import git.moiCR.hcf.lib.menu.misc.BackButton;
 import git.moiCR.hcf.lib.menu.paginated.MenuPaginated;
 import git.moiCR.hcf.teams.Team;
-import git.moiCR.hcf.claim.Claim;
+import git.moiCR.hcf.teams.claim.Claim;
 import git.moiCR.hcf.teams.menu.edit.TeamEditMenu;
 import git.moiCR.hcf.utils.Constants;
 import git.moiCR.hcf.utils.ItemMaker;
@@ -29,12 +29,14 @@ public class TeamManageClaims extends MenuPaginated {
         this.team = team;
         setSoundOnClick(true);
         getNavigateBar().put(4, new NewClaimButton());
-        getNavigateBar().put(7, new BackButton(getPlayer(), this, new TeamEditMenu(instance, player, team)));
+
     }
 
 
     @Override
     public Map<Integer, Button> getPaginatedButtons() {
+        getNavigateBar().put((getCurrentPage() == 1 ? 1 : 2), new BackButton(getPlayer(), this, new TeamEditMenu(getInstance(), getPlayer(), team)));
+
         Map<Integer, Button> buttons = new HashMap<>();
         if (team.getClaims().isEmpty()){
             return buttons;
@@ -60,7 +62,7 @@ public class TeamManageClaims extends MenuPaginated {
                     switch (event.getClick()) {
                         case LEFT -> getPlayer().teleport(claim.getCenter());
                         case RIGHT -> {
-                            team.removeClaim(claim);
+                            getInstance().getClaimManager().removeClaim(team, claim);
                             update();
                         }
                     }
@@ -74,7 +76,7 @@ public class TeamManageClaims extends MenuPaginated {
 
     @Override
     public String getTitle() {
-        return LangHandler.INSTANCE.getMessage(getPlayer(), Lang.EDITING).replace("%name%", team.getName());
+        return LangHandler.INSTANCE.getMessage(getPlayer(), Lang.EDITING).replace("%team%", team.getName());
     }
 
     @Override

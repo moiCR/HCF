@@ -1,4 +1,4 @@
-package git.moiCR.hcf.claim;
+package git.moiCR.hcf.teams.claim;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;

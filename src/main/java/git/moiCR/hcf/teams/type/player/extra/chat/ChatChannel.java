@@ -1,4 +1,4 @@
-package git.moiCR.hcf.teams.type.player.extra;
+package git.moiCR.hcf.teams.type.player.extra.chat;
 
 public enum ChatChannel {
 

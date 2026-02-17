@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'git.moiCR'
-version = '0.2-SNAPSHOT'
+version = '0.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -24,13 +24,10 @@ shadowJar{
     relocate("xyz.xenondevs.particle", "git.moiCR.hcf.lib.particle")
     relocate("mkremins.fanciful", "git.moiCR.hcf.lib.fanciful")
     relocate("net.amoebaman.util", "git.moiCR.hcf.utils")
-    relocate("com.google", "git.moiCR.hcf.lib.gson")
     relocate("com.mongodb", "git.moiCR.hcf.lib.mongodb")
 
     exclude 'META-INF/maven/**'
     exclude 'META-INF/annotations/**'
-
-    minimize()
 }
 
 dependencies {

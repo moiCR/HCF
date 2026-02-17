@@ -5,6 +5,8 @@ import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.command.Command;
 import git.moiCR.hcf.lib.command.CommandManager;
 import git.moiCR.hcf.teams.commands.args.staff.TeamSystemArg;
+import git.moiCR.hcf.teams.commands.args.user.TeamCreateArg;
+import git.moiCR.hcf.teams.commands.args.user.TeamWhoArg;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
@@ -15,7 +17,9 @@ public class TeamCommand extends Command {
         super("team");
         setAliases(List.of("t", "faction", "f", "fac", "factions", "teams", "clan", "clans"));
         setArguments(List.of(
-                new TeamSystemArg(manager)
+                new TeamSystemArg(manager),
+                new TeamCreateArg(manager),
+                new TeamWhoArg(manager)
         ));
     }
 

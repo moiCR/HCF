@@ -18,9 +18,9 @@ The primary goal of this project is to provide a robust and scalable foundation 
 
 ## 🗺️ Roadmap
 ### Phase #1: Core Essentials (Current)
-* [ ] **Team System:** base structure, member management, and roles.
+* [X] **Team System:** base structure, member management, and roles.
 * [X] **Claim System:** Chunk-based spatial hashing for $O(1)$ lookup performance.
-* [ ] **DTR (Deaths Till Raidable):** Implementation of DTR freeze, regeneration, and raid states.
+* [X] **DTR (Deaths Till Raidable):** Implementation of DTR freeze, regeneration, and raid states.
 * [ ] **Persistance Layer:** Integration with MongoDB for asynchronous data saving.
 
 ### Phase #2: Game Mechanichs

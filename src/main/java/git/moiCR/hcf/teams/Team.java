@@ -1,9 +1,10 @@
 package git.moiCR.hcf.teams;
 
-import git.moiCR.hcf.claim.Claim;
+import git.moiCR.hcf.teams.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +33,10 @@ public abstract class Team {
 
     public void removeClaim(Claim claim){
         claims.removeIf(claims::contains);
+    }
+
+    public void sendInfo(Player player){
+
     }
 
 }

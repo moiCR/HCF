@@ -89,3 +89,22 @@ team-system-command-usage:
   - "&e* &6/t system create <nombre> &7- Crea un equipo de sistema."
   - "&e* &6/t system editor &7- Abre el menú del editor de equipos."
   - "&7&m------------------------------------------------"
+
+already-in-team: "&cYa estás en un equipo."
+team-created: "&eEl equipo &9&l%team% &efue creado exitosamente por &f%player%&e."
+length-error: "&cEl %value% debe tener más de %minLength% caracteres de longitud"
+
+deathban: "&cDeathban"
+non-deathban: "&aSin Deathban"
+
+team-who-info:
+  - "&7&m------------------------------------------------"
+  - "&9&l%name% &7[%online%/%max%] &b&l- &eHQ: &f%hq%"
+  - "&eLíder&7: &f%leader%"
+  - "&eCo-Líderes&7: &f%co-leaders%"
+  - "&eCapitanes&7: &f%captains%"
+  - "&eMiembros&7: &f%members%"
+  - "&eBalance&7: &9$%balance%"
+  - "&eDTR&7: %dtr%"
+  - "%frozen_time%"
+  - "&7&m------------------------------------------------"

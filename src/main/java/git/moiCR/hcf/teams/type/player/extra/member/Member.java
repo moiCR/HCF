@@ -1,5 +1,6 @@
-package git.moiCR.hcf.teams.type.player.extra;
+package git.moiCR.hcf.teams.type.player.extra.member;
 
+import git.moiCR.hcf.teams.type.player.extra.chat.ChatChannel;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;

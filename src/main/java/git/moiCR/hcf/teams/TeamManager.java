@@ -4,14 +4,16 @@ import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.Manager;
-import git.moiCR.hcf.claim.Claim;
+import git.moiCR.hcf.teams.claim.Claim;
 import git.moiCR.hcf.teams.type.TeamTypeEnum;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
+import git.moiCR.hcf.teams.type.player.extra.dtr.DTRTask;
 import git.moiCR.hcf.teams.type.system.TeamRoad;
 import git.moiCR.hcf.teams.type.system.TeamSafezone;
 import git.moiCR.hcf.teams.type.system.TeamWarzone;
 import git.moiCR.hcf.teams.type.system.TeamWilderness;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
@@ -30,6 +32,8 @@ public class TeamManager extends Manager {
         this.teams = new HashSet<>();
         this.wildernessTeam = new TeamWilderness();
         this.warzoneTeam = new TeamWarzone();
+
+        Bukkit.getScheduler().runTaskTimer(instance, new DTRTask(instance), 0L, 20L);
     }
 
 

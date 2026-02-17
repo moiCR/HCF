@@ -1,7 +1,7 @@
 package git.moiCR.hcf.utils;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.claim.ClaimHandler;
+import git.moiCR.hcf.teams.claim.ClaimHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;

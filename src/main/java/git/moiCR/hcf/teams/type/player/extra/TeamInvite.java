@@ -1,5 +1,6 @@
 package git.moiCR.hcf.teams.type.player.extra;
 
+import git.moiCR.hcf.teams.type.player.extra.member.Role;
 import lombok.Getter;
 import lombok.Setter;
 

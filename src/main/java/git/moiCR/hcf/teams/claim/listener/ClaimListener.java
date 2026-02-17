@@ -1,4 +1,4 @@
-package git.moiCR.hcf.claim.listener;
+package git.moiCR.hcf.teams.claim.listener;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.api.PlayerChangeClaimEvent;

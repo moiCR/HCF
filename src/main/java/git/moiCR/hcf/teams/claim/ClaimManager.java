@@ -1,4 +1,4 @@
-package git.moiCR.hcf.claim;
+package git.moiCR.hcf.teams.claim;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lib.Manager;
@@ -54,6 +54,11 @@ public class ClaimManager extends Manager {
         }
 
         team.getClaims().add(newClaim);
+    }
+
+    public void removeClaim(Team team, Claim claim){
+        chunkMap.values().removeIf(chunkClaim -> chunkClaim.getId().equals(claim.getId()));
+        team.removeClaim(claim);
     }
 
     public Claim getClaimAt(Location location) {

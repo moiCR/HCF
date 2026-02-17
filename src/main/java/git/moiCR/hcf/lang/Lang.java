@@ -12,11 +12,15 @@ public enum Lang {
     DISPLAY_NAME("display-name-value", "displayName"),
     COLOR("color-value", "color"),
     CLAIM("claim-value", "claim"),
+    ALREADY_IN_TEAM("already-in-team", "&cYou are already in a team."),
+    TEAM_CREATED("team-created", "&eTeam &9&l%team% &ewas succesfully created by &f%player%&e."),
+    LENGTH_ERROR("length-error", "&cThe %value% must be more than %minLength% characters long"),
 
-    FROM_CLAIM("from-claim", "&7From&7: %team% &7(%deathban%&7)"),
-    TO_CLAIM("to-claim", "&7From&7: %team% &7(%deathban%&7)"),
+    FROM_CLAIM("from-claim", "&7From: %team% &7(%deathban%&7)"),
+    TO_CLAIM("to-claim", "&7From: %team% &7(%deathban%&7)"),
     DEATH_BAN("deathban", "&cDeathban"),
     NON_DEATH_BAN("non-deathban", "&aNon-Deathban"),
+    TEAM_WHO_INFO("team-who-info", "&cError in lang file"),
 
     BOTH_CORNERS("both-corners", "&cYou must select both corners of the claim."),
 

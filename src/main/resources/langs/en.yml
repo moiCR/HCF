@@ -1,4 +1,3 @@
-# General Messages
 no-perms: "&c&lYou don't have permissions."
 only-player: "&c&lThis command is only executable in game."
 unknown-command: "&c&lUnknown command."
@@ -7,7 +6,6 @@ error-occurred: "&c&lAn error occurred while executing this command."
 usage: "&c&lUsage: %usage%"
 operation-cancelled: "&c&lOperation cancelled."
 
-# Team & Process
 team-already-exists: "&c&lA team with that name already exists."
 team-successfully-created: "&a&lTeam &e%team% &asuccessfully created."
 process-cancelled: "&c&lProcess cancelled."
@@ -17,7 +15,6 @@ redirecting: "&aRedirecting..."
 enter-team-name: "&eEnter the name for the team."
 select-team-type: "Please select the team type."
 
-# GUI & Editing
 select-team-to-edit: "Select a team to edit."
 click-to-edit: "&eClick to edit."
 click-to-change: "&aClick to change %value%"
@@ -33,13 +30,11 @@ new-team-create: "&aCreate a new team"
 new-team-create-lore:
   - "&eClick to create a new team."
 
-# Values
 name-value: "name"
 display-name-value: "displayName"
 color-value: "color"
 claim-value: "claim"
 
-# Claims
 from-claim: "&7From: %team% &7(%deathban%)"
 to-claim: "&7To: %team% &7(%deathban%)"
 both-corners: "&cYou must select both corners of the claim."
@@ -53,7 +48,6 @@ team-claim-lore:
   - "&aClick to teleport to this claim."
   - "&cRight click to delete this claim."
 
-# Commands
 team-command-usage:
   - "&7&m------------------------------------------------"
   - "&6&lTeam Commands"
@@ -74,6 +68,7 @@ team-command-usage:
   - ""
   - "&e&lLeader Commands"
   - "&e* &6/t disband &7- Disband your team."
+  - "&7&m------------------------------------------------"
 team-system-command-usage:
   - "&7&m------------------------------------------------"
   - "&6&lTeam System Commands"
@@ -84,3 +79,22 @@ team-system-command-usage:
   - "&e* &6/t system create <name> &7- Create a team."
   - "&e* &6/t system editor &7- Open the team editor menu."
   - "&7&m------------------------------------------------"
+
+team-who-info:
+  - "&7&m------------------------------------------------"
+  - "&9&l%name% &7[%online%/%max%] &b&l- &eHQ: &f%hq%"
+  - "&eLeader&7: &f%leader%"
+  - "&eCo-Leaders&7: &f%co-leaders%"
+  - "&eCaptains&7: &f%captains%"
+  - "&eMembers&7: &f%members%"
+  - "&eBalance&7: &9$%balance%"
+  - "&eDTR&7: %dtr%"
+  - "%frozen_time%"
+  - "&7&m------------------------------------------------"
+
+already-in-team: "&cYou are already in a team."
+team-created: "&eTeam &9&l%team% &ewas succesfully created by &f%player%&e."
+length-error: "&cThe %value% must be more than %minLength% characters long"
+
+deathban: "&cDeathban"
+non-deathban: "&aNon-Deathban"
