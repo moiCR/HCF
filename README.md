@@ -21,7 +21,7 @@ The primary goal of this project is to provide a robust and scalable foundation 
 * [X] **Team System:** base structure, member management, and roles.
 * [X] **Claim System:** Chunk-based spatial hashing for $O(1)$ lookup performance.
 * [X] **DTR (Deaths Till Raidable):** Implementation of DTR freeze, regeneration, and raid states.
-* [ ] **Persistance Layer:** Integration with MongoDB for asynchronous data saving.
+* [X] **Persistance Layer:** Integration with MongoDB for asynchronous data saving.
 
 ### Phase #2: Game Mechanichs
 * [ ] **Deathban & Lives System:** Configurable deathbans based on rank and life management.
