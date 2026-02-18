@@ -1,5 +1,6 @@
 package git.moiCR.hcf.teams.type.player;
 
+import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.teams.Team;
@@ -10,6 +11,7 @@ import git.moiCR.hcf.utils.CC;
 import lombok.Getter;
 import lombok.Setter;
 import mkremins.fanciful.FancyMessage;
+import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -26,7 +28,9 @@ public class TeamPlayer extends Team {
     private DTRStatus dtrStatus;
     private long frozenUntil;
     private boolean open;
+    private int points;
     private Set<Member> members;
+    private boolean regenNotified = true;
 
     public TeamPlayer(String name, Player leader) {
         super(name, name, ChatColor.WHITE);
@@ -35,12 +39,45 @@ public class TeamPlayer extends Team {
         this.dtr = 1.1;
         this.dtrStatus = DTRStatus.NORMAL;
         this.frozenUntil = 0;
+        this.points = 0;
 
         this.open = false;
 
         this.members = new HashSet<>();
         this.members.add(new Member(leader.getUniqueId(), Role.LEADER));
+    }
 
+    public TeamPlayer(Main instance, Document document) {
+        super(instance, document);
+        if (document.containsKey("hq")) {
+            Document hqDoc = (Document) document.get("hq");
+            this.homeLocation = new Location(
+                    Bukkit.getWorld(hqDoc.getString("world")),
+                    hqDoc.getDouble("x"),
+                    hqDoc.getDouble("y"),
+                    hqDoc.getDouble("z")
+            );
+        }
+
+
+        this.dtr = document.getDouble("dtr");
+        this.frozenUntil = document.getLong("frozen_until");
+        this.balance = document.getInteger("balance");
+        this.points = document.getInteger("points");
+        this.open = document.getBoolean("open");
+        this.members = new HashSet<>();
+
+        var savedMembers = document.getList("members", Document.class);
+
+        savedMembers.forEach(member -> members.add(
+                new Member(
+                        UUID.fromString(member.getString("id")),
+                        Role.valueOf(member.getString("role"))
+                )));
+
+        this.dtrStatus = DTRStatus.valueOf(document.getString("dtr_status"));
+
+        instance.getTeamManager().getTeams().add(this);
     }
 
     public Member getMember(UUID uuid) {
@@ -96,6 +133,16 @@ public class TeamPlayer extends Team {
         return seconds + "s";
     }
 
+    public void broadcast(String... messages){
+        var onlineMembers = getOnlineMembers().stream().map(Member::getPlayer).toList();
+
+        for (Player player : onlineMembers) {
+            for (String message : messages) {
+                player.sendMessage(CC.t(message));
+            }
+        }
+    }
+
 
     private List<UUID> getCoLeaders(){
         List<UUID> coLeaders = new ArrayList<>();
@@ -147,7 +194,8 @@ public class TeamPlayer extends Team {
                     .replace("%members%", formatPlayerList(getNormalMembers()))
                     .replace("%balance%", String.valueOf(balance))
                     .replace("%dtr%", dtrText)
-                    .replace("%frozen_time%", frozenLine);
+                    .replace("%frozen_time%", frozenLine)
+                    .replace("%points%", String.valueOf(points));
 
             if (baseLine.contains("%hq%")) {
                 String[] parts = baseLine.split("%hq%");
@@ -195,5 +243,35 @@ public class TeamPlayer extends Team {
         return uuids.stream()
                 .map(this::formatPlayerName)
                 .collect(java.util.stream.Collectors.joining("&7, "));
+    }
+
+
+    @Override
+    public Document toDocument() {
+        Document document = super.toDocument();
+
+        if (homeLocation != null){
+            document.append("hq", new Document()
+                    .append("world", homeLocation.getWorld().getName())
+                    .append("x", homeLocation.getX())
+                    .append("y", homeLocation.getY())
+                    .append("z", homeLocation.getZ()));
+        }
+
+        document.append("balance", balance);
+        document.append("dtr", dtr);
+        document.append("dtr_status", dtrStatus.name());
+        document.append("frozen_until", frozenUntil);
+        document.append("open", open);
+        document.append("points", points);
+
+        document.append("members", members.stream()
+                .map(member -> new Document()
+                        .append("id", member.getId().toString())
+                        .append("role", member.getRole().name()))
+                .collect(java.util.stream.Collectors.toList()));
+
+
+        return document;
     }
 }

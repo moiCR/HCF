@@ -101,3 +101,11 @@ non-deathban: "&aNon-Deathban"
 
 team-chat-format: "&2(Team) %player%: %message%"
 ally-chat-format: "&d(Ally) %player%: %message%"
+
+dtr-regen-start: "&a&l[!] &aYour team is no longer frozen. DTR regeneration has started."
+dtr-regen-full: "&a&l[!] &aYour team has reached maximum DTR!"
+member-death: "&cMember Death: &e%player% &7(-1.0 DTR)"
+team-frozen: "&cYour team's DTR is now &l%dtr% &cand is &lFROZEN &cfor %time%."
+team-raidable: "&4&lWARNING! &cYour team is now RAIDABLE!"
+points-loss: "&cYour team lost &e%points% &cpoints!"
+points-gain: "&aYour team gained &e%points% &apoints!"

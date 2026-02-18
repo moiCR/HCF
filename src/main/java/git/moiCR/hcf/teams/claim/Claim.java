@@ -2,6 +2,7 @@ package git.moiCR.hcf.teams.claim;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -32,6 +33,20 @@ public class Claim {
         this.y2 = corner2.getBlockY();
         this.z2 = corner2.getBlockZ();
         calculateBounds();
+    }
+
+
+    public Document toDocument() {
+        return new Document()
+                .append("id", id.toString())
+                .append("world_name", worldName)
+                .append("owner_id", ownerId.toString())
+                .append("x1", x1)
+                .append("y1", y1)
+                .append("z1", z1)
+                .append("x2", x2)
+                .append("y2", y2)
+                .append("z2", z2);
     }
 
     private void calculateBounds() {

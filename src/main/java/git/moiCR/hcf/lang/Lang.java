@@ -17,6 +17,16 @@ public enum Lang {
     NOT_IN_TEAM("not-in-team", "&cYou are not in team."),
     CHAT_CHANGED("chat-changed", "&eYou now are in %chat% chat."),
 
+    MEMBER_DEATH("member-death", "&cMember Death: &e%player% &7(-1.0 DTR)"),
+    TEAM_FROZEN("team-frozen", "&cYour team's DTR is now &l%dtr% &cand is &lFROZEN &cfor %time%."),
+    TEAM_RAIDABLE("team-raidable", "&4&lWARNING! &cYour team is now RAIDABLE!"),
+    DTR_REGEN_START("dtr-regen-start", "&aYour team is no longer frozen and DTR will begin regenerating!"),
+    DTR_REGEN_FULL("dtr-regen-full", "&aYour team has reached maximum DTR!"),
+
+    // Points
+    POINTS_LOSS("points-loss", "&cYour team lost &e%points% &cpoints!"),
+    POINTS_GAIN("points-gain", "&aYour team gained &e%points% &apoints!"),
+
     TEAM_CHAT_FORMAT("team-chat-format", "&e(Team) &f%player%&7: &e%message%"),
     ALLY_CHAT_FORMAT("ally-chat-format", "&d(Ally) &f%player%&7: &d%message%"),
 

@@ -5,6 +5,7 @@ import git.moiCR.hcf.profile.HCFProfile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ProfileListener implements Listener {
 
@@ -23,8 +24,20 @@ public class ProfileListener implements Listener {
             profile.updateName();
             return;
         }
-        profile = new HCFProfile(player);
-        plugin.getProfileManager().addProfile(profile);
+
+        var newProfile = new HCFProfile(player);
+        plugin.getProfileManager().addProfile(newProfile);
+    }
+
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event){
+        var player = event.getPlayer();
+        var profile = plugin.getProfileManager().findProfile(player);
+
+        if (profile == null) return;
+
+        plugin.getStorageManager().getStorage().saveProfile(profile, true);
     }
 
 }

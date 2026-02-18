@@ -111,3 +111,11 @@ team-who-info:
 
 team-chat-format: "&2(Equipo) %player%: %message%"
 ally-chat-format: "&d(Aliado) %player%: %message%"
+
+dtr-regen-start: "&a&l[!] &aTu equipo ya no está congelado. El DTR ha comenzado a regenerarse."
+dtr-regen-full: "&a&l[!] &a¡Tu equipo ha alcanzado el DTR máximo!"
+member-death: "&cMuerte de Miembro: &e%player% &7(-1.0 DTR)"
+team-frozen: "&cEl DTR de tu equipo es ahora &l%dtr% &cy está &lCONGELADO &cdurante %time%."
+team-raidable: "&4&l¡ADVERTENCIA! &c¡Tu equipo es ahora RAIDABLE!"
+points-loss: "&c¡Tu equipo perdió &e%points% &cpuntos!"
+points-gain: "&a¡Tu equipo ganó &e%points% &apuntos!"

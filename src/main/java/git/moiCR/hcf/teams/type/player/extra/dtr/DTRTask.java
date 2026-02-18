@@ -1,6 +1,8 @@
 package git.moiCR.hcf.teams.type.player.extra.dtr;
 
 import git.moiCR.hcf.Main;
+import git.moiCR.hcf.lang.Lang;
+import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import lombok.AllArgsConstructor;
 
@@ -13,7 +15,15 @@ public class DTRTask implements Runnable {
     @Override
     public void run() {
         for (TeamPlayer team : instance.getTeamManager().getPlayerTeams()){
-            if (team.isFrozen()) continue;
+            if (team.isFrozen()) {
+                if (team.isRegenNotified()) team.setRegenNotified(false);
+                continue;
+            }
+
+            if (!team.isRegenNotified()) {
+                team.setRegenNotified(true);
+                team.broadcast(LangHandler.INSTANCE.getMessage(null, Lang.DTR_REGEN_START));
+            }
 
             double maxDTR = team.getMaxDtr();
             double currentDTR = team.getDtr();
@@ -26,7 +36,7 @@ public class DTRTask implements Runnable {
             team.setDtr(newDtr);
 
             if (newDtr >= maxDTR){
-                //message
+                team.broadcast(LangHandler.INSTANCE.getMessage(null, Lang.DTR_REGEN_FULL));
             }
         }
     }
