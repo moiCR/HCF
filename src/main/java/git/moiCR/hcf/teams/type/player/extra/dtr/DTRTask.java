@@ -3,7 +3,6 @@ package git.moiCR.hcf.teams.type.player.extra.dtr;
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import lombok.AllArgsConstructor;
-import org.bukkit.scheduler.BukkitRunnable;
 
 @AllArgsConstructor
 public class DTRTask implements Runnable {
@@ -19,7 +18,7 @@ public class DTRTask implements Runnable {
             double maxDTR = team.getMaxDtr();
             double currentDTR = team.getDtr();
 
-            if (currentDTR > maxDTR){
+            if (currentDTR >= maxDTR){
                 continue;
             }
 

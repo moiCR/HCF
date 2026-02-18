@@ -66,7 +66,7 @@ public class TeamManager extends Manager {
         return null;
     }
 
-    public Team getTeamByPlayer(Player player){
+    public TeamPlayer getTeamByPlayer(Player player){
         for (TeamPlayer team : getPlayerTeams()) {
             if (team.isMember(player)) return team;
         }

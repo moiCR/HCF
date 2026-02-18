@@ -98,3 +98,6 @@ length-error: "&cThe %value% must be more than %minLength% characters long"
 
 deathban: "&cDeathban"
 non-deathban: "&aNon-Deathban"
+
+team-chat-format: "&2(Team) %player%: %message%"
+ally-chat-format: "&d(Ally) %player%: %message%"

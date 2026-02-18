@@ -2,6 +2,7 @@ package git.moiCR.hcf.listener;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lib.Manager;
+import git.moiCR.hcf.listener.impl.ChatListener;
 import git.moiCR.hcf.listener.impl.GeneralListener;
 import git.moiCR.hcf.profile.listener.ProfileListener;
 import git.moiCR.hcf.teams.claim.listener.ClaimListener;
@@ -25,7 +26,8 @@ public class ListenerManager extends Manager {
         listeners.addAll(List.of(
                 new GeneralListener(getInstance()),
                 new ProfileListener(getInstance()),
-                new ClaimListener(getInstance())
+                new ClaimListener(getInstance()),
+                new ChatListener(getInstance())
         ));
 
 

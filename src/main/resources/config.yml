@@ -1,1 +1,2 @@
-TEAM_SIZE: 2
+team-size: 2
+chat-format: "%prefix%%color%%player%%prefix%&7: &f%message%"

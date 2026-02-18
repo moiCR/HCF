@@ -5,6 +5,7 @@ import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.command.Command;
 import git.moiCR.hcf.lib.command.CommandManager;
 import git.moiCR.hcf.teams.commands.args.staff.TeamSystemArg;
+import git.moiCR.hcf.teams.commands.args.user.TeamChatArg;
 import git.moiCR.hcf.teams.commands.args.user.TeamCreateArg;
 import git.moiCR.hcf.teams.commands.args.user.TeamWhoArg;
 import org.bukkit.command.CommandSender;
@@ -19,7 +20,8 @@ public class TeamCommand extends Command {
         setArguments(List.of(
                 new TeamSystemArg(manager),
                 new TeamCreateArg(manager),
-                new TeamWhoArg(manager)
+                new TeamWhoArg(manager),
+                new TeamChatArg(manager)
         ));
     }
 

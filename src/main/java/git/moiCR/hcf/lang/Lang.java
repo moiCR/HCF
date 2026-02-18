@@ -7,7 +7,6 @@ import lombok.Getter;
 @Getter
 public enum Lang {
 
-    //VALUES
     NAME("name-value", "name"),
     DISPLAY_NAME("display-name-value", "displayName"),
     COLOR("color-value", "color"),
@@ -15,6 +14,11 @@ public enum Lang {
     ALREADY_IN_TEAM("already-in-team", "&cYou are already in a team."),
     TEAM_CREATED("team-created", "&eTeam &9&l%team% &ewas succesfully created by &f%player%&e."),
     LENGTH_ERROR("length-error", "&cThe %value% must be more than %minLength% characters long"),
+    NOT_IN_TEAM("not-in-team", "&cYou are not in team."),
+    CHAT_CHANGED("chat-changed", "&eYou now are in %chat% chat."),
+
+    TEAM_CHAT_FORMAT("team-chat-format", "&e(Team) &f%player%&7: &e%message%"),
+    ALLY_CHAT_FORMAT("ally-chat-format", "&d(Ally) &f%player%&7: &d%message%"),
 
     FROM_CLAIM("from-claim", "&7From: %team% &7(%deathban%&7)"),
     TO_CLAIM("to-claim", "&7From: %team% &7(%deathban%&7)"),

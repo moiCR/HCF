@@ -108,3 +108,6 @@ team-who-info:
   - "&eDTR&7: %dtr%"
   - "%frozen_time%"
   - "&7&m------------------------------------------------"
+
+team-chat-format: "&2(Equipo) %player%: %message%"
+ally-chat-format: "&d(Aliado) %player%: %message%"
