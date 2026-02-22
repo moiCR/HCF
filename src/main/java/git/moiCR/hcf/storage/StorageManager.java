@@ -15,7 +15,6 @@ public class StorageManager extends Manager {
         this.storage = new MongoStorage(instance, instance.getConfig().getString("mongo_uri"));
     }
 
-
     @Override
     public void load() {
         storage.load();

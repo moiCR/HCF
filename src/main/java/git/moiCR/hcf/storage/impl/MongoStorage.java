@@ -4,6 +4,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ReplaceOptions;
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.profile.Profile;
@@ -13,6 +14,7 @@ import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import git.moiCR.hcf.teams.type.system.TeamEvent;
 import git.moiCR.hcf.teams.type.system.TeamRoad;
 import git.moiCR.hcf.teams.type.system.TeamSafezone;
+import git.moiCR.hcf.utils.CC;
 import org.bson.Document;
 import git.moiCR.hcf.teams.Team;
 import org.bukkit.Bukkit;
@@ -45,7 +47,6 @@ public class MongoStorage implements IStorage {
     public void unload() {
         saveProfiles();
         saveTeams();
-
         client.close();
     }
 
@@ -54,7 +55,7 @@ public class MongoStorage implements IStorage {
     public void loadProfiles() {
         try {
             var documents = profileCollection.find();
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Loading profiles...");
+            Bukkit.getConsoleSender().sendMessage(CC.t("&aLoading profiles..."));
             documents.forEach(profileDoc -> {
                 var profile = new Profile(instance, profileDoc);
                 instance.getProfileManager().addProfile(profile);
@@ -83,9 +84,12 @@ public class MongoStorage implements IStorage {
 
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Saving profile " + profile.getName());
             var document = profile.toDocument();
-            profileCollection.replaceOne(new Document("_id",
-                            profile.getId().toString()), document,
-                    new ReplaceOptions().upsert(true));
+            profileCollection.replaceOne(
+                    Filters.eq("id", profile.getId().toString()),
+                    document,
+                    new ReplaceOptions().upsert(true)
+            );
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,7 +98,7 @@ public class MongoStorage implements IStorage {
     @Override
     public void loadTeams() {
         try {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Loading teams...");
+            Bukkit.getConsoleSender().sendMessage(CC.t("&aLoading teams..."));
             var documents = teamCollection.find();
             documents.forEach(document -> {
                 String type = document.getString("type");
@@ -128,9 +132,11 @@ public class MongoStorage implements IStorage {
             var document = team.toDocument();
             document.append("type", team.getClass().getSimpleName());
 
-            teamCollection.replaceOne(new Document("_id",
-                            team.getId().toString()), document,
-                    new ReplaceOptions().upsert(true));
+            teamCollection.replaceOne(
+                    Filters.eq("id", team.getId().toString()),
+                    document,
+                    new ReplaceOptions().upsert(true)
+            );
 
         } catch (Exception e) {
             e.printStackTrace();
