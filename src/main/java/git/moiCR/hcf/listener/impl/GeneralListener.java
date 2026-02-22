@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 
 @AllArgsConstructor
 public class GeneralListener implements Listener {
@@ -36,16 +37,17 @@ public class GeneralListener implements Listener {
                         LangHandler.INSTANCE.getMessage(player, Lang.DEATH_BAN)));
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onCreatureSpawn(CreatureSpawnEvent event){
         if (event.getEntity() instanceof Player){
             return;
         }
 
-        if (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER){
-            event.setCancelled(true);
+        if (event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.SPAWNER){
+            return;
         }
-    }
 
+        event.setCancelled(true);
+    }
 
 }

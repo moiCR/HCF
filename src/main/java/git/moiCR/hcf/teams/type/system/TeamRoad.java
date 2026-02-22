@@ -1,8 +1,10 @@
 package git.moiCR.hcf.teams.type.system;
 
+import git.moiCR.hcf.Main;
 import git.moiCR.hcf.teams.Team;
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.Document;
 import org.bukkit.ChatColor;
 
 @Getter
@@ -13,4 +15,7 @@ public class TeamRoad extends Team {
         super(name, name + " Road", ChatColor.GOLD);
     }
 
+    public TeamRoad(Main instance, Document document) {
+        super(instance, document);
+    }
 }

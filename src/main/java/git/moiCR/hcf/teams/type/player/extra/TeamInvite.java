@@ -1,6 +1,6 @@
 package git.moiCR.hcf.teams.type.player.extra;
 
-import git.moiCR.hcf.teams.type.player.extra.member.Role;
+import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,12 +11,14 @@ public class TeamInvite {
 
     private UUID id;
     private UUID teamId;
-    private UUID invitedPlayerId;
 
-    public TeamInvite(UUID teamId, UUID invitedPlayerId) {
-        this.teamId = teamId;
-        this.invitedPlayerId = invitedPlayerId;
+    public TeamInvite(TeamPlayer team) {
+        this.id = UUID.randomUUID();
+        this.teamId = team.getId();
     }
 
-
+    public TeamInvite(UUID id, UUID teamId) {
+        this.id = id;
+        this.teamId = teamId;
+    }
 }

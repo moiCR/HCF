@@ -42,7 +42,6 @@ public class TeamPlayer extends Team {
         this.points = 0;
 
         this.open = false;
-
         this.members = new HashSet<>();
         this.members.add(new Member(leader.getUniqueId(), Role.LEADER));
     }

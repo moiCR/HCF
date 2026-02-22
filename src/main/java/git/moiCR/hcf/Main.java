@@ -7,6 +7,7 @@ import git.moiCR.hcf.lib.command.CommandManager;
 import git.moiCR.hcf.lib.menu.MenuHandler;
 import git.moiCR.hcf.lib.prompt.PromptHandler;
 import git.moiCR.hcf.listener.ListenerManager;
+import git.moiCR.hcf.location.LocationManager;
 import git.moiCR.hcf.profile.ProfileManager;
 import git.moiCR.hcf.storage.StorageManager;
 import git.moiCR.hcf.teams.TeamManager;
@@ -30,7 +31,7 @@ public final class Main extends JavaPlugin {
     private ProfileManager profileManager;
     private ListenerManager listenerManager;
     private StorageManager storageManager;
-
+    private LocationManager locationManager;
 
     private MenuHandler menuHandler;
     private PromptHandler promptHandler;
@@ -41,18 +42,20 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         try{
+            this.config = new YmlFile(this, "config");
             this.managers = new ArrayList<>();
+
             this.teamManager = new TeamManager(this);
             this.claimManager = new ClaimManager(this);
             this.commandManager = new CommandManager(this);
             this.profileManager = new ProfileManager(this);
             this.listenerManager = new ListenerManager(this);
+            this.locationManager = new LocationManager(this);
 
             this.menuHandler = new MenuHandler(this);
             this.promptHandler = new PromptHandler(this);
             this.langHandler = new LangHandler(this);
 
-            this.config = new YmlFile(this, "config");
 
             this.storageManager = new StorageManager(this);
             this.managers.forEach(Manager::load);

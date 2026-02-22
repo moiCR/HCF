@@ -2,8 +2,19 @@ package git.moiCR.hcf.teams.claim.listener;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.api.events.PlayerChangeClaimEvent;
+import git.moiCR.hcf.teams.type.player.TeamPlayer;
+import git.moiCR.hcf.teams.type.system.TeamRoad;
+import git.moiCR.hcf.teams.type.system.TeamSafezone;
+import git.moiCR.hcf.teams.type.system.TeamWilderness;
+import org.bukkit.GameMode;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
@@ -18,7 +29,7 @@ public class ClaimListener implements Listener {
     }
 
     @EventHandler
-    public void onMove(PlayerMoveEvent event){
+    public void onMove(PlayerMoveEvent event) {
         var from = event.getFrom();
         var to = event.getTo();
         var player = event.getPlayer();
@@ -32,21 +43,20 @@ public class ClaimListener implements Listener {
         var teamFrom = plugin.getClaimManager().getTeamAt(from);
         var teamTo = plugin.getClaimManager().getTeamAt(to);
 
-        if (Objects.equals(teamFrom, teamTo)){
+        if (Objects.equals(teamFrom, teamTo)) {
             return;
         }
 
         var newEvent = new PlayerChangeClaimEvent(player, teamFrom, teamTo);
         plugin.getServer().getPluginManager().callEvent(newEvent);
-        if (!newEvent.isCancelled()){
-            return;
-        }
 
-        event.setTo(from);
+        if (newEvent.isCancelled()) {
+            event.setTo(from);
+        }
     }
 
     @EventHandler
-    public void onTeleport(PlayerTeleportEvent event){
+    public void onTeleport(PlayerTeleportEvent event) {
         var from = event.getFrom();
         var to = event.getTo();
         var player = event.getPlayer();
@@ -54,16 +64,95 @@ public class ClaimListener implements Listener {
         var teamFrom = plugin.getClaimManager().getTeamAt(from);
         var teamTo = plugin.getClaimManager().getTeamAt(to);
 
-        if (Objects.equals(teamFrom, teamTo)){
+        if (Objects.equals(teamFrom, teamTo)) {
             return;
         }
 
         var newEvent = new PlayerChangeClaimEvent(player, teamFrom, teamTo);
         plugin.getServer().getPluginManager().callEvent(newEvent);
-        if (!newEvent.isCancelled()){
+
+        if (newEvent.isCancelled()) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onBreakBlock(BlockBreakEvent event) {
+        var player = event.getPlayer();
+        var block = event.getBlock();
+        var teamAt = plugin.getClaimManager().getTeamAt(block.getLocation());
+        boolean bypass = this.haveBypass(player);
+
+        if (teamAt instanceof TeamWilderness || bypass) return;
+
+        if (teamAt instanceof TeamSafezone || teamAt instanceof TeamRoad) {
+            event.setCancelled(true);
             return;
         }
 
-        event.setCancelled(true);
+        if (teamAt instanceof TeamPlayer pt) {
+            if (!pt.isMember(player)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlaceBlock(BlockPlaceEvent event) {
+        var player = event.getPlayer();
+        var block = event.getBlock();
+        var teamAt = plugin.getClaimManager().getTeamAt(block.getLocation());
+        boolean bypass = this.haveBypass(player);
+
+        if (teamAt instanceof TeamWilderness || bypass) return;
+
+        if (teamAt instanceof TeamSafezone || teamAt instanceof TeamRoad) {
+            event.setCancelled(true);
+            return;
+        }
+
+        if (teamAt instanceof TeamPlayer pt) {
+            if (!pt.isMember(player)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        var player = event.getPlayer();
+        var block = event.getClickedBlock();
+        if (block == null) return;
+
+        boolean bypass = this.haveBypass(player);
+        var teamAt = plugin.getClaimManager().getTeamAt(block.getLocation());
+
+        if (teamAt instanceof TeamWilderness || bypass) return;
+        if (!isInteractable(block.getType())) return;
+
+        if (event.getAction() == Action.LEFT_CLICK_BLOCK) return;
+
+        if (teamAt instanceof TeamSafezone || teamAt instanceof TeamRoad) {
+            event.setCancelled(true);
+            return;
+        }
+
+        if (teamAt instanceof TeamPlayer pt) {
+            if (!pt.isMember(player)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    private boolean isInteractable(Material type) {
+        return switch (type) {
+            case CHEST, TRAPPED_CHEST, ENDER_CHEST, FURNACE, DISPENSER, DROPPER, HOPPER, ANVIL, BREWING_STAND,
+                 ENCHANTMENT_TABLE, NOTE_BLOCK, LEVER, BEACON, JUKEBOX -> true;
+            default -> type.name().contains("BUTTON") || type.name().contains("DOOR") || type.name().contains("GATE");
+        };
+    }
+
+    public boolean haveBypass(Player player) {
+        return player.hasPermission("hcf.bypass") && player.getGameMode() == GameMode.CREATIVE;
     }
 }

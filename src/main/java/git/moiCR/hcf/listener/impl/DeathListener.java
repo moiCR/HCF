@@ -3,7 +3,7 @@ package git.moiCR.hcf.listener.impl;
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
-import git.moiCR.hcf.profile.death.Death;
+import git.moiCR.hcf.profile.death.DeathRecord;
 import lombok.AllArgsConstructor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,8 +23,8 @@ public class DeathListener implements Listener {
         if (profile != null){
             profile.setDeaths(profile.getDeaths() + 1);
             profile.setKillStreak(0);
-            profile.getDeathsList().add(
-                    new Death(
+            profile.getDeathRecords().add(
+                    new DeathRecord(
                             player.getLocation(),
                             player.getInventory().getContents(),
                             player.getInventory().getArmorContents()

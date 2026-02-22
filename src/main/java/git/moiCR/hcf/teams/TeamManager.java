@@ -8,10 +8,7 @@ import git.moiCR.hcf.teams.claim.Claim;
 import git.moiCR.hcf.teams.type.TeamTypeEnum;
 import git.moiCR.hcf.teams.type.player.TeamPlayer;
 import git.moiCR.hcf.teams.type.player.extra.dtr.DTRTask;
-import git.moiCR.hcf.teams.type.system.TeamRoad;
-import git.moiCR.hcf.teams.type.system.TeamSafezone;
-import git.moiCR.hcf.teams.type.system.TeamWarzone;
-import git.moiCR.hcf.teams.type.system.TeamWilderness;
+import git.moiCR.hcf.teams.type.system.*;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -32,7 +29,6 @@ public class TeamManager extends Manager {
         this.teams = new HashSet<>();
         this.wildernessTeam = new TeamWilderness();
         this.warzoneTeam = new TeamWarzone();
-
         Bukkit.getScheduler().runTaskTimer(instance, new DTRTask(instance), 0L, 20L);
     }
 
@@ -46,7 +42,6 @@ public class TeamManager extends Manager {
 
     public Team getTeam(String name){
         for (Team faction : teams) {
-            if (faction instanceof TeamPlayer) continue;
             if(faction.getName().equalsIgnoreCase(name)) return faction;
         }
         return null;
@@ -88,6 +83,7 @@ public class TeamManager extends Manager {
         switch (teamType) {
             case ROAD -> team = new TeamRoad(name);
             case SAFE_ZONE -> team = new TeamSafezone(name);
+            case EVENT -> team = new TeamEvent(name);
         }
 
         if (team == null){

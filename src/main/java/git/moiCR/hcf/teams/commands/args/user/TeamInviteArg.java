@@ -4,7 +4,7 @@ import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.command.Argument;
 import git.moiCR.hcf.lib.command.CommandManager;
-import git.moiCR.hcf.profile.HCFProfile;
+import git.moiCR.hcf.profile.Profile;
 import git.moiCR.hcf.utils.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -34,7 +34,7 @@ public class TeamInviteArg extends Argument {
         }
 
         String name = args[0];
-        HCFProfile profile = getManager().getInstance().getProfileManager().findProfile(Bukkit.getPlayer(name));
+        Profile profile = getManager().getInstance().getProfileManager().findProfile(Bukkit.getPlayer(name));
 
         if (profile == null){
             return;

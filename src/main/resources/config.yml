@@ -2,3 +2,9 @@ mongo_uri: ""
 
 team-size: 2
 chat-format: "%prefix%%color%%player%%prefix%&7: &f%message%"
+
+locations:
+  overworld-spawn: ""
+  nether-spawn: ""
+  end-spawn: ""
+  end-exit: ""

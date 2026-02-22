@@ -1,13 +1,13 @@
 package git.moiCR.hcf.storage;
 
-import git.moiCR.hcf.profile.HCFProfile;
+import git.moiCR.hcf.profile.Profile;
 import git.moiCR.hcf.teams.Team;
 
 public interface IStorage {
 
     void loadProfiles();
     void saveProfiles();
-    void saveProfile(HCFProfile profile, boolean async);
+    void saveProfile(Profile profile, boolean async);
 
     void loadTeams();
     void saveTeams();

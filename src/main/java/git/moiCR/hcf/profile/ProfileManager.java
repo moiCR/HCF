@@ -13,7 +13,7 @@ import java.util.UUID;
 @Getter
 public class ProfileManager extends Handler {
 
-    private final Map<UUID, HCFProfile> profiles;
+    private final Map<UUID, Profile> profiles;
 
     public ProfileManager(Main instance) {
         super(instance);
@@ -23,23 +23,23 @@ public class ProfileManager extends Handler {
     @Override
     public void load() {
         Bukkit.getOnlinePlayers().forEach(player -> {
-            var profile = new HCFProfile(player);
+            var profile = new Profile(player);
             addProfile(profile);
         });
     }
 
-    public HCFProfile findProfile(Player player){
+    public Profile findProfile(Player player){
         return profiles.get(player.getUniqueId());
     }
 
-    public HCFProfile findProfile(UUID id){
+    public Profile findProfile(UUID id){
         return profiles.get(id);
     }
 
-    public HCFProfile findByName(String name){
+    public Profile findByName(String name){
         return  profiles.values().stream().filter(profile -> profile.getName().equals(name)).findFirst().orElse(null);
     }
-    public void addProfile(HCFProfile profile){
+    public void addProfile(Profile profile){
         profiles.put(profile.getId(), profile);
     }
 

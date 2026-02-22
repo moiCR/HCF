@@ -1,7 +1,7 @@
 package git.moiCR.hcf.profile.listener;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.profile.HCFProfile;
+import git.moiCR.hcf.profile.Profile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -25,7 +25,7 @@ public class ProfileListener implements Listener {
             return;
         }
 
-        var newProfile = new HCFProfile(player);
+        var newProfile = new Profile(player);
         plugin.getProfileManager().addProfile(newProfile);
     }
 
