@@ -1,7 +1,7 @@
 package git.moiCR.hcf.teams.claim.listener;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.api.PlayerChangeClaimEvent;
+import git.moiCR.hcf.api.events.PlayerChangeClaimEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;

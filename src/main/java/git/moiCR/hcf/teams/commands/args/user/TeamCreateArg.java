@@ -1,6 +1,6 @@
 package git.moiCR.hcf.teams.commands.args.user;
 
-import git.moiCR.hcf.api.TeamPlayerCreateEvent;
+import git.moiCR.hcf.api.events.TeamPlayerCreateEvent;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.command.Argument;

@@ -1,5 +1,6 @@
 package git.moiCR.hcf;
 
+import git.moiCR.hcf.api.API;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.lib.Manager;
 import git.moiCR.hcf.lib.command.CommandManager;
@@ -55,6 +56,8 @@ public final class Main extends JavaPlugin {
 
             this.storageManager = new StorageManager(this);
             this.managers.forEach(Manager::load);
+
+            new API(this);
         }catch (Exception e){
             e.printStackTrace();
             Bukkit.getPluginManager().disablePlugin(this);

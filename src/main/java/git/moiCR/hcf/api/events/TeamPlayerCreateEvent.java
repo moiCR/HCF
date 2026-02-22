@@ -1,4 +1,4 @@
-package git.moiCR.hcf.api;
+package git.moiCR.hcf.api.events;
 
 import git.moiCR.hcf.teams.Team;
 import lombok.Getter;

@@ -2,12 +2,15 @@ package git.moiCR.hcf.profile;
 
 import git.moiCR.hcf.Main;
 import git.moiCR.hcf.profile.death.Death;
+import git.moiCR.hcf.teams.Team;
 import git.moiCR.hcf.teams.type.player.extra.TeamInvite;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import mkremins.fanciful.FancyMessage;
 import org.bson.Document;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -27,7 +30,7 @@ public class HCFProfile {
     private int killStreak;
     private double kdr;
     private String language;
-    private Set<TeamInvite> invites;
+    private List<TeamInvite> invites;
     private List<Death> deathsList;
 
     public HCFProfile(Player player) {
@@ -39,7 +42,7 @@ public class HCFProfile {
         this.killStreak = 0;
         this.kdr = 0.0;
         this.language = player.spigot().getLocale();
-        this.invites = new HashSet<>();
+        this.invites = new ArrayList<>();
         this.deathsList = new ArrayList<>();
     }
 
@@ -54,7 +57,7 @@ public class HCFProfile {
         this.kdr = document.getDouble("kdr");
         this.language = document.getString("language");
 
-        this.invites = new HashSet<>();
+        this.invites = new ArrayList<>();
         this.deathsList = new ArrayList<>();
 
         instance.getProfileManager().addProfile(this);
@@ -72,6 +75,36 @@ public class HCFProfile {
         setName(player.getName());
     }
 
+    public TeamInvite getInvite(Team team){
+        return this.invites
+                .stream()
+                .filter(invite -> invite.getTeamId().equals(team.getId()))
+                .findFirst()
+                .orElse(null);
+    }
+
+
+    public void invite(Team team){
+        this.invites.add(new TeamInvite(team.getId(), getId()));
+        var player = getPlayer();
+
+        if (player == null || !player.isOnline()){
+            return;
+        }
+
+        new FancyMessage("&a" + team.getName() + "has invited you.")
+                .then("(Click here to accept)")
+                .command("t join " + team.getName()).send(player);
+
+    }
+
+    public Player getPlayer(){
+        return Bukkit.getPlayer(getId());
+    }
+
+    public OfflinePlayer getOfflinePlayer(){
+        return Bukkit.getOfflinePlayer(getId());
+    }
 
     public Document toDocument(){
         return new Document("_id", id.toString())

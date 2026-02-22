@@ -94,6 +94,7 @@ public class MongoStorage implements IStorage {
     @Override
     public void loadTeams() {
         try{
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Loading teams...");
             var documents = teamCollection.find();
             documents.forEach(document -> {
                 String type = document.getString("type");
@@ -117,7 +118,6 @@ public class MongoStorage implements IStorage {
 
     @Override
     public void saveTeam(Team team, boolean async) {
-
         if (async){
             Bukkit.getScheduler().runTaskAsynchronously(instance, () -> saveTeam(team, false));
             return;

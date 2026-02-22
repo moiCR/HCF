@@ -1,7 +1,7 @@
 package git.moiCR.hcf.listener.impl;
 
 import git.moiCR.hcf.Main;
-import git.moiCR.hcf.api.PlayerChangeClaimEvent;
+import git.moiCR.hcf.api.events.PlayerChangeClaimEvent;
 import git.moiCR.hcf.lang.Lang;
 import git.moiCR.hcf.lang.LangHandler;
 import git.moiCR.hcf.teams.type.system.TeamSafezone;
