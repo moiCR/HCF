@@ -72,7 +72,7 @@ public class ClaimListener implements Listener {
         plugin.getServer().getPluginManager().callEvent(newEvent);
 
         if (newEvent.isCancelled()) {
-            event.setCancelled(true);
+            event.setTo(from);
         }
     }
 
